@@ -1,0 +1,20 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+src = {editable = true,extras = ["all"],path = "."}
+click = "*"
+coverage = "*"
+awscli = "*"
+flake8 = "*"
+python-dotenv = ">=0.5.1"
+#black = "*"
+pytest = "*"
+Sphinx = "*"
+
+[requires]
+python_version = "3.7"
