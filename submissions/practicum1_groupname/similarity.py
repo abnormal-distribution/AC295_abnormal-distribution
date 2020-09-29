@@ -1,15 +1,14 @@
 import numpy as np
 import pandas as pd
 
-
 from PIL import Image
 from glob import glob
 from joblib import Parallel, delayed
 
 
 PATH_IMAGES = "/Users/rberi/Google Drive (Stanford GSB)/EdX & Coursera/HarvardX/Advanced Practical Data Science/AC295_abnormal-distribution/data/gap_images/gap_"
-PATH_IMAGES_RESIZE_COLOR = "/Users/rberi/Google Drive (Stanford GSB)/EdX & Coursera/HarvardX/Advanced Practical Data Science/AC295_abnormal-distribution/data/color_resize.csv"
-PATH_IMAGES_RESIZE_BW = "/Users/rberi/Google Drive (Stanford GSB)/EdX & Coursera/HarvardX/Advanced Practical Data Science/AC295_abnormal-distribution/data/bw_resize.csv"
+PATH_IMAGES_RESIZE_COLOR = "/Users/rberi/Google Drive (Stanford GSB)/EdX & Coursera/HarvardX/Advanced Practical Data Science/AC295_abnormal-distribution/data/color_resize/col_"
+PATH_IMAGES_RESIZE_BW = "/Users/rberi/Google Drive (Stanford GSB)/EdX & Coursera/HarvardX/Advanced Practical Data Science/AC295_abnormal-distribution/data/bw_resize/bw_"
 PATH_RESIZED_LIST = "/Users/rberi/Google Drive (Stanford GSB)/EdX & Coursera/HarvardX/Advanced Practical Data Science/AC295_abnormal-distribution/data/resized_list.csv"
 
 
@@ -24,8 +23,8 @@ def resize_library(size=SIZE):
     filenames = set(filenames)
     
     try:
-        resized_list = pd.read_csv(PATH_RESIZED_LIST)
-        filenames = filenames - set(resized_list.values)
+        resized_list = pd.read_csv(PATH_RESIZED_LIST, dtype=str)
+        filenames = set(filenames) - set(resized_list[resized_list.columns[0]])
         del resized_list
     except:
         pass
@@ -43,13 +42,10 @@ def resize_color(image_in, size, img, save=False):
     if channels < 3:
         return None
     
-    image = image_in.convert('RGB')
-    image = np.asarray(image.resize(size)).reshape(1, -1).astype('float32') / 255.0
+    image = image_in.convert('RGB').resize(size)
     
     if save:
-        image = pd.DataFrame(image, index=[img])
-        image.to_csv(PATH_IMAGES_RESIZE_COLOR, mode='a', header=False)
-        print("Color image {} resized".format(img))
+        image.save(PATH_IMAGES_RESIZE_COLOR + img + '.jpg')
         return None
     else:
         return image
@@ -58,13 +54,10 @@ def resize_color(image_in, size, img, save=False):
 def resize_bw(image_in, size, img, save=False):
     """This functions re-sizes a color/grayscale image into new size and grayscale"""
 
-    image = image_in.convert('L')
-    image = np.asarray(image.resize(size)).reshape(1, -1).astype('float32') / 255.0
+    image = image_in.convert('L').resize(size)
 
     if save:
-        image = pd.DataFrame(image, index=[img])
-        image.to_csv(PATH_IMAGES_RESIZE_BW, mode='a', header=False)
-        print("Grayscale image {} resized".format(img))
+        image.save(PATH_IMAGES_RESIZE_BW + img + '.jpg')
         return None
     else:
         return image
