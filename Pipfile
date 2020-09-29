@@ -18,6 +18,8 @@ Sphinx = "*"
 dask = {extras = ["complete"],version = "*"}
 numpy = "*"
 pandas = "*"
+dask-image = "*"
+joblib = "*"
 
 [requires]
 python_version = "3.7"
