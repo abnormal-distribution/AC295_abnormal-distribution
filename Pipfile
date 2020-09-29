@@ -15,6 +15,9 @@ python-dotenv = ">=0.5.1"
 #black = "*"
 pytest = "*"
 Sphinx = "*"
+dask = {extras = ["complete"],version = "*"}
+numpy = "*"
+pandas = "*"
 
 [requires]
 python_version = "3.7"
