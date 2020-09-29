@@ -176,3 +176,7 @@ ipython_config.py
 
 # Data
 data/
+
+submissions/practicum1_groupname/webappdatabase/data/*
+submissions/practicum1_groupname/webappdatabase/static/gap_images/*
+

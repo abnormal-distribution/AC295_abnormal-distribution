@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-db-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db-app
+  template:
+    metadata:
+      labels:
+        app: db-app
+    spec:               #What state you desire for the object
+      containers:
+      - name: db-container
+        image: database:db
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8082
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: webapp-db-service   # 1️⃣ this must match in both files - this will be the hostname for our dburl.
+spec:
+    selector:
+        app: db-app
+    ports:
+      - protocol: TCP
+        port: 8082
+        targetPort: 8082

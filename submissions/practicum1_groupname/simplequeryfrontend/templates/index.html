@@ -1,0 +1,14 @@
+{% extends 'base.html'  %}  
+{% block head  %} 
+   <title>Practicum 1 - Art Search Engine</title>
+{% endblock %}
+
+{% block body  %} 
+        <h1> Practicum 1 - Art Search Engine </h1>
+        Type in the name of the painting you are searching for:
+        <form action="/" method="POST">
+            <input type="text" name="dataidname" id="data_id"> 
+            <input type="submit" value="Go Get it!">
+        </form>
+
+{% endblock %}

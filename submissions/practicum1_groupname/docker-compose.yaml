@@ -1,0 +1,23 @@
+# Make sure to build the images before docker-compose up
+# docker build -t webapp:db -f Docker_maindb .
+# docker build -t task1:frontend -f Docker_simple_query_frontend .
+# Do not run images, following 2 run command are here only to help us write our docker compose file.
+# docker run --name mywebdb -d --network appNetwork webapp:db
+# docker run --name fe -d -p 5000:8081 -e DB_HOST=mywebdb --network appNetwork task1:frontend
+# services: mywebdb => This is name of the container
+# Docker compose will take care creating a common network for these 2 containers.
+
+
+version: '3.0'
+services:
+  mywebdb:
+    image: database:db
+    ports:
+      - "32500:8082"
+
+  fe:
+    image: simple_query:frontend
+    ports:
+      - "5000:8081"
+    environment:
+      - DB_HOST=mywebdb

@@ -1,0 +1,10 @@
+# This defines a kubernetes service ConfigMap. This is the place to put all
+# your application properties / configuration.
+# In our case it's the database host.
+
+apiVersion: v1   #Which version of the Kubernetes API you're using to create this object
+kind: ConfigMap  #What kind of object you want to create
+metadata:
+  name: webappdb-configmap # 🎃
+data:
+  database_host: webapp-db-service # 1️⃣
