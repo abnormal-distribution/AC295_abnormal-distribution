@@ -20,6 +20,9 @@ numpy = "*"
 pandas = "*"
 dask-image = "*"
 joblib = "*"
+jupyter = "*"
+scikit-image = "*"
+dask-distance = "*"
 
 [requires]
 python_version = "3.7"

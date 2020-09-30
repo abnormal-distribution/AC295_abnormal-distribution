@@ -11,7 +11,7 @@ client = Client()
 """
 
 
-PATH = "/Users/rberi/Google Drive (Stanford GSB)/EdX & Coursera/HarvardX/Advanced Practical Data Science/AC295_abnormal-distribution/data/metadata.csv"
+PATH = "/data/metadata.csv"
 
 
 def simpleQuery(name, path=PATH, username=None, password=None):
@@ -88,7 +88,7 @@ def multiQuery(names, path=PATH, username=None, password=None):
 if __name__ == '__main__':
     print(simpleQuery("Sea"))
     print(multiQuery("Sea"))
-    print(multiQuery("Sea, pilot*"))
+    print(multiQuery("Sea, paint boat"))
 
 
 
