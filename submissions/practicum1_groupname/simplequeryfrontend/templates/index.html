@@ -1,14 +1,41 @@
-{% extends 'base.html'  %}  
-{% block head  %} 
-   <title>Practicum 1 - Art Search Engine</title>
+{% extends 'base.html' %}
+
+{% block head %}
+
 {% endblock %}
 
-{% block body  %} 
-        <h1> Practicum 1 - Art Search Engine </h1>
-        Type in the name of the painting you are searching for:
-        <form action="/" method="POST">
-            <input type="text" name="dataidname" id="data_id"> 
-            <input type="submit" value="Go Get it!">
-        </form>
+{% block body %}
+
+<!-- <div class="content">
+    <h5 class="title">Search Engine</h5>
+    <div class="search">
+      <input type="search" class="search-box" id="search_value" />
+      <span class="search-button">
+        <span class="search-icon" onclick=showText()></span>
+      </span>
+    </div>
+    <p id="result"></p> 
+     <form action="/" method="POST">
+        <input type="text" name="content" id="content">
+        <input type="submit" value="Add Task">
+    </form> 
+ </div> -->
+ <h5 class="headline">What Image Are You Looking For?</h5>
+ <form action="/" method="POST">
+     <div class="searchBox">
+        <input class="searchInput" type="text" placeholder="Search" name="content" id="content">
+        <button class="searchButton" href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+            </svg>
+
+    <!--         <i class="material-icons">
+                search
+            </i> -->
+        </button>
+    </div>
+</form>
+
+
 
 {% endblock %}
