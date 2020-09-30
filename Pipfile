@@ -23,6 +23,7 @@ joblib = "*"
 jupyter = "*"
 scikit-image = "*"
 dask-distance = "*"
+flask = "*"
 
 [requires]
 python_version = "3.7"
