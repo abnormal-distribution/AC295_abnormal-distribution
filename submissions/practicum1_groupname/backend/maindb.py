@@ -36,6 +36,7 @@ def populate_db():
 if __name__ == "__main__": 
 	# query image meta
 	populate_db()
+	file_id = "gap_11111.jpg"
 	image = db.session.query(image_meta).filter(image_meta.file_id==file_id).first()
 	print(image.title)
 	print(image.artist)
