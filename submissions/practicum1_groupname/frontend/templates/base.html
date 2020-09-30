@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,800" rel="stylesheet" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main2.css') }}">
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        <!-- <script src="{{ url_for('static', filename='js/extention/choices.js') }}"></script> -->
+        <script>
+          // function showText() {
+          //     var text = document.getElementById("choices-text-preset-values").value;
+          //     console.log(text);
+          //     document.getElementById("result").innerHTML = text;
+          //   };
+        </script>
+    </body>
+</html>

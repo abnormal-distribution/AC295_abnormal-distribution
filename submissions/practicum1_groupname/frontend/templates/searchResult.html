@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+
+<!-- <div class="content">
+    <h5 class="title">Search Engine</h5>
+    <div class="search">
+      <input type="search" class="search-box" id="search_value" />
+      <span class="search-button">
+        <span class="search-icon" onclick=showText()></span>
+      </span>
+    </div>
+    <p id="result"></p> 
+     <form action="/" method="POST">
+        <input type="text" name="content" id="content">
+        <input type="submit" value="Add Task">
+    </form> 
+ </div> -->
+ <h5 class="image-title">{{ title }}</h5>
+ <!-- <h7 class="image-subtitle">{{ subtitle }}</h7> -->
+ <div>
+  <img class="image-result" src="{{image_url}}">
+ </div>
+ <div>
+  <a class="backHome" href="/">Back to Home</a>
+</div>
+
+
+{% endblock %}
