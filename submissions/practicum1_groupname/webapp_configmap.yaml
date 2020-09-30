@@ -5,6 +5,7 @@
 apiVersion: v1   #Which version of the Kubernetes API you're using to create this object
 kind: ConfigMap  #What kind of object you want to create
 metadata:
-  name: webappdb-configmap # 🎃
+  name: webappdb-configmap
 data:
-  database_host: webapp-db-service # 1️⃣
+  meta_database_host: webapp-meta-db-service
+  similarity_database_host: webapp-similarity-db-service

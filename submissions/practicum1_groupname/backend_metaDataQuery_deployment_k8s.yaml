@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-meta-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: metadb-app
+  template:
+    metadata:
+      labels:
+        app: metadb-app
+    spec:               #What state you desire for the object
+      containers:
+      - name: metadb-container
+        image: metadatabase:db
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8082
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: webapp-meta-db-service   # 1️⃣ this must match in both files - this will be the hostname for our dburl.
+spec:
+    selector:
+        app: metadb-app
+    ports:
+      - protocol: TCP
+        port: 8082
+        targetPort: 8082
