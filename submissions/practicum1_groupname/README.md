@@ -6,9 +6,11 @@ Abnormal Distribution
 Local build
 ------------
     
-docker build -t simple_query:frontend -f Docker_simple_query_frontend .
+docker build -t frontend:fe -f Docker_frontend .
 
-docker build -t database:db -f Docker_maindb .   
+docker build -t simidatabase:db -f Docker_similarity .
+
+docker build -t metadatabase:db -f Docker_metaDataQuery .  
 
 docker-compose up -d
 
@@ -21,17 +23,21 @@ minikube start
 
 eval $(minikube docker-env)
 
-docker build -t simple_query:frontend -f Docker_simple_query_frontend .
+docker build -t frontend:fe -fDocker_frontend .
 
-docker build -t database:db -f Docker_maindb .   
+docker build -t simidatabase:db -f Docker_similarity .
+
+docker build -t metadatabase:db -f Docker_metaDataQuery .
 
 kubectl apply -f webapp_configmap.yaml
 
-kubectl apply -f webapp_db_deployment_k8s.yaml
+kubectl apply -f backend_metaDataQuery_deployment_k8s.yaml
 
-kubectl apply -f simple_query_deployment_k8s.yaml
+kubectl apply -f backend_similarity_deployment_k8s.yaml
 
-minikube service webapp-simplequery-service
+kubectl apply -f frontend_deployment_k8s.yaml
+
+minikube service webapp-frontend-service
 
 
 minikube delete
