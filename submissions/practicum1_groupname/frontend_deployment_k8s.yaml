@@ -1,37 +1,42 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: simplequery-get-image-deployment
+  name: frontend-get-image-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: simplequery-app
+      app: frontend-app
   template:
     metadata:
       labels:
-        app: simplequery-app
+        app: frontend-app
     spec:
       containers:
-      - name: simplequery-container
-        image: simple_query:frontend
+      - name: frontend-container
+        image: frontend:fe
         imagePullPolicy: IfNotPresent
         env:
-        - name: DB_HOST
+        - name: DB_HOST1
           valueFrom:
               configMapKeyRef:
                   name: webappdb-configmap  # 🎃 must match
-                  key: database_host
+                  key: meta_database_host
+        - name: DB_HOST2
+          valueFrom:
+              configMapKeyRef:
+                  name: webappdb-configmap  # 🎃 must match
+                  key: similarity_database_host
         ports:
         - containerPort: 8081
 ---
 apiVersion: v1
 kind: Service
 metadata:
-    name: webapp-simplequery-service
+    name: webapp-frontend-service
 spec:
     selector:
-        app: simplequery-app
+        app: frontend-app
     type: LoadBalancer  #We want this exposed to the outside world
     ports:
       - protocol: TCP

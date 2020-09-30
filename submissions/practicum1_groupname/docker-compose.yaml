@@ -10,14 +10,20 @@
 
 version: '3.0'
 services:
-  mywebdb:
-    image: database:db
+  metaquery:
+    image: metadatabase:db
     ports:
       - "32500:8082"
 
+  similarity:
+    image: simidatabase:db
+    ports:
+      - "32501:8083"
+
   fe:
-    image: simple_query:frontend
+    image: frontend:fe
     ports:
       - "5000:8081"
     environment:
-      - DB_HOST=mywebdb
+      - DB_HOST1=metaquery
+      - DB_HOST2=similarity

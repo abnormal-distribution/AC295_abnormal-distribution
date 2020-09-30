@@ -3,7 +3,8 @@
 FROM python:3.7-slim-buster
 
 # Environment variable or argument passed to simple_query.py
-ENV DB_HOST='localhost'
+ENV DB_HOST1='localhost'
+ENV DB_HOST2='localhost'
 
 # This exposes the port 8081 so that Docker container can receive requests through this port.
 EXPOSE 8081
@@ -15,4 +16,4 @@ COPY . .
 RUN pip3 install -r requirements.txt
 
 # Run our python script/application in the Docker container.
-CMD python ./simple_query.py $DB_HOST
+CMD python ./frontend.py $DB_HOST1 $DB_HOST2
