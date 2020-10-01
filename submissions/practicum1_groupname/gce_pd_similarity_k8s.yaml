@@ -1,0 +1,28 @@
+# gcePersistentDisk - Persistent Volume and Persistent Volume Claim
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: practicum1-resize-data
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOne
+  storageClassName: slow
+  gcePersistentDisk:
+    pdName: practicum-1-resize-data
+    fsType: ext4
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: practicum-1-resize-data-disk-claim
+spec:
+  resources:
+      requests:
+        storage: 10Gi
+      accessModes:
+        - ReadWriteOne
+      storageClassName: slow
+

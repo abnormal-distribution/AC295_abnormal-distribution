@@ -9,10 +9,9 @@ from joblib import Parallel, delayed
 from dask_distance import cosine
 
 
-PATH_IMAGES = "/Users/rberi/Google Drive (Stanford GSB)/EdX & Coursera/HarvardX/Advanced Practical Data Science/AC295_abnormal-distribution/data/gap_images/gap_"
-PATH_IMAGES_RESIZE_COLOR = "/data/color_resize/"
-PATH_IMAGES_RESIZE_BW = "/data/bw_resize/"
-PATH_RESIZED_LIST = "/data/resized_list.csv"
+PATH_IMAGES = "image-data/gap_"
+PATH_IMAGES_RESIZE_BW = "resize-data/"
+PATH_RESIZED_LIST = "resize-data/resized_list.csv"
 
 
 SIZE = 32, 32
@@ -70,7 +69,7 @@ def resize_image(img, size=SIZE, save=False):
     """This functions reads the image files and calls the color and grayscale resizing."""
     
     image = Image.open(PATH_IMAGES + img + ".jpg")
-    img_col = resize_color(image, size, img, save)
+    #img_col = resize_color(image, size, img, save)
     img_bw = resize_bw(image, size, img, save)
     
     if save:
@@ -78,13 +77,13 @@ def resize_image(img, size=SIZE, save=False):
             f.write(img+'\n')
         return
     else:
-        return img_bw, img_col
+        return img_bw #, img_col
 
 
 def cosine_similarity(image):
     """This functions computes cosine similarity between images in the database and the image provided by the user"""
     
-    img_bw, img_col = resize_image(image, size=SIZE)
+    img_bw = resize_image(image, size=SIZE)
     
     df_bw = di.imread(PATH_IMAGES_RESIZE_BW + '*.jpg').reshape(-1, SIZE[0] * SIZE[1])
     img_bw = np.asarray(img_bw).reshape(1, (SIZE[0] * SIZE[1]))

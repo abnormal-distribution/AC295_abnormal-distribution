@@ -16,6 +16,13 @@ spec:
       - name: frontend-container
         image: frontend:fe
         imagePullPolicy: IfNotPresent
+        volumeMounts:
+          - mountPath: /image-data
+            name: practicum-1-images-volume
+        volumes:
+          - name: practicum-1-images-volume
+            persistentVolumeClain:
+              claimName: practicum-1-images-disk-read-claim
         env:
         - name: DB_HOST1
           valueFrom:

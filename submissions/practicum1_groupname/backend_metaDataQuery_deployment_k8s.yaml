@@ -16,13 +16,20 @@ spec:
       - name: metadb-container
         image: metadatabase:db
         imagePullPolicy: IfNotPresent
+        volumeMounts:
+          - mountPath: /meta-data
+            name: practicum-1-meta-data-volume
+        volumes:
+          - name: practicum-1-meta-data-volume
+            persistentVolumeClain:
+              claimName: practicum-1-meta-data-claim
         ports:
         - containerPort: 8082
 ---
 apiVersion: v1
 kind: Service
 metadata:
-    name: webapp-meta-db-service   # 1️⃣ this must match in both files - this will be the hostname for our dburl.
+    name: webapp-meta-db-service
 spec:
     selector:
         app: metadb-app

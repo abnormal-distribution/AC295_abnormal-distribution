@@ -175,8 +175,15 @@ ipython_config.py
 #   git rm -r .ipynb_checkpoints/
 
 # Data
-data/
-
-submissions/practicum1_groupname/webappdatabase/data/*
+submissions/practicum1_groupname/data/*
+submissions/practicum1_groupname/backend_metaDataQuery/data
+submissions/practicum1_groupname/backend_similarity/data
+submissions/practicum1_groupname/webappdatabase/data/
 submissions/practicum1_groupname/webappdatabase/static/gap_images/*
 
+*data/*
+data
+data/**/
+**/data/**
+
+.DS_Store
