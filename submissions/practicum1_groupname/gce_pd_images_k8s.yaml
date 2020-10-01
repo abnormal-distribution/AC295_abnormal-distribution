@@ -37,5 +37,5 @@ spec:
     requests:
       storage: 10Gi
   accessModes:
-    - ReadOnlyMany
+    - ReadWriteOnce
   storageClassName: standard
