@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
 import sys
 import requests
-import numpy as np
 from base64 import b64encode
 
 app = Flask(__name__)

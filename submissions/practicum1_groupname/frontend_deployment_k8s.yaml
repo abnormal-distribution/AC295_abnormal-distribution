@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: frontend-container
-        image: frontend:fe
+        image: gcr.io/gothic-space-289008/frontend:fe
         imagePullPolicy: IfNotPresent
         volumeMounts:
           - mountPath: /image-data
