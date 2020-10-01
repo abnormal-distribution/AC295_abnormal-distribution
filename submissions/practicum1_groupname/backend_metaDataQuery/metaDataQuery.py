@@ -38,7 +38,7 @@ def simpleQuery(name, path=PATH, username=None, password=None):
     df = dd.read_csv(path)
     df = df.loc[df['Title'].str.contains(pat=name, case=False, na=False, regex=False)]
     
-    return df.compute()
+    return df.to_json(compute=True)
 
 
 def multiQuery(names, path=PATH, username=None, password=None):
@@ -83,7 +83,7 @@ def multiQuery(names, path=PATH, username=None, password=None):
     df = dd.read_csv(path)
     df = df.loc[mask]
     
-    return df.compute()
+    return df.to_json(compute=True)
 
 if __name__ == '__main__':
     print(simpleQuery("Sea"))
