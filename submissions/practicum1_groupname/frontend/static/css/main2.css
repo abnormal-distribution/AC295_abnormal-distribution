@@ -1,6 +1,12 @@
+/*------------------------------------------------
+Controls the page setting and Background Image
+------------------------------------------------*/
+@import "bourbon";
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,300);
+
 html {
     /*background-image: linear-gradient(to right , #cb2d3e , #ef473a);*/
-    background: url("../images/museum.jpg");
+    background: url("{{ url_for('static', filename='images/museum.jpg') }}");
     /*background-position: center;*/
     background-size: cover;
     background-repeat: no-repeat;
@@ -9,11 +15,19 @@ html {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+
 }
+
+body {
+  font-family: 'Lato', sans-serif; 
+}
+
+/*------------------------------------------------
+Title / Headline 
+------------------------------------------------*/
 
 .headline {
     position: absolute;
-    top: 25%;
     left: 50%;
     transform:  translate(-50%,50%);
     /*background: #2f3640;*/
@@ -21,14 +35,32 @@ html {
     border-radius: 40px;
     padding: 10px;
     color: #2f3640;
-    font-family: American Typewriter, serif;
-    font-size:35px;
-
 }
+
+.title {
+    top: 22%;
+    font-size:35px;
+    font-family: American Typewriter, serif;
+}
+
+.subtitle1 {
+    top: 32%;
+    font-size: 18px;
+}
+
+.subtitle2 {
+    top: 48%;
+    font-size: 18px;
+}
+
+/*------------------------------------------------
+Second Input Box
+Upload Image to find similar Image
+------------------------------------------------*/
 
 .searchBox {
     position: absolute;
-    top: 42.5%;
+    top: 43%;
     left: 50%;
     transform:  translate(-50%,50%);
     background: #2f3640;
@@ -49,7 +81,7 @@ html {
 }
 
 .searchButton {
-    fill: white;
+    /*fill: white;*/
     color: white;
     float: right;
     width: 40px;
@@ -76,6 +108,103 @@ html {
 
 }
 
+
+/*------------------------------------------------
+Second Input Box
+Upload Image to find similar Image
+------------------------------------------------*/
+/*label {
+   cursor: pointer;
+}*/
+
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile + label {
+    font-size: 16px;
+    /*font-size: 1.25em;*/
+    /*font-weight: 700;*/
+    display: inline-block;
+
+    cursor: pointer; /* "hand" cursor */
+}
+
+/*.inputfile:focus + label,
+.inputfile + label:hover {
+    background-color: #2f3640;
+    color: lightgrey;
+    border: 2px solid #2f3640;
+    padding: 10px;
+    border-radius: 40px;
+}*/
+
+.inputfile:focus + label {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+.inputfile + label svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    fill: currentColor;
+    margin-top: -0.25em;
+    /* 4px */
+    margin-right: 0.25em;
+    /* 4px */
+}
+
+.inputfile-2:focus + label,
+.inputfile-2.has-focus + label,
+.inputfile-2 + label:hover {
+    color: #722040;
+}
+
+
+.uploadBox {
+    background: #2f3640;
+    color: lightgrey;
+    border: 2px solid #2f3640;
+    padding: 10px;
+    border-radius: 40px;
+
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform:  translate(-50%,50%);
+    border-radius: 40px;
+    text-anchor: center;
+    text-align: center;
+
+}
+
+.uploadBox:hover {
+    background: transparent;
+    color: #2f3640;
+    border: 2px solid currentColor;
+    padding: 10px;
+    border-radius: 40px;
+    fill: #2f3640;
+}
+
+.uploadButton { 
+    background: lightgrey;
+}
+
+.uploadButton:hover { 
+    cursor: pointer;
+}
+
+/*------------------------------------------------
+Button to go back to main page
+------------------------------------------------*/
+
 .backHome{
     position: absolute;
     top: 75%;
@@ -89,6 +218,10 @@ html {
     font-family: American Typewriter, serif;
     font-size:15px;
 }
+
+/*------------------------------------------------
+Setting for Image Result page
+------------------------------------------------*/
 
 .image-title {
     position: absolute;
@@ -132,6 +265,10 @@ html {
 
 @media screen and (max-width: 620px) {
 .searchBox:hover > .searchInput {
+    width: 150px;
+    padding: 0 6px;
+}
+.uploadBox:hover > .uploadInput {
     width: 150px;
     padding: 0 6px;
 }
