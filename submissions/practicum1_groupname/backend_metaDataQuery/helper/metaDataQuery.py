@@ -11,7 +11,7 @@ client = Client()
 """
 
 
-PATH = "/data/metadata.csv"
+PATH = "/meta-data/metadata.csv"
 
 
 def verySimpleQuery(name, path=PATH, username=None, password=None):

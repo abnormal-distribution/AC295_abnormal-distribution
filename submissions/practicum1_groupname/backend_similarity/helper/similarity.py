@@ -9,9 +9,9 @@ from joblib import Parallel, delayed
 from dask_distance import cosine
 
 
-PATH_IMAGES = "image-data/gap_"
-PATH_IMAGES_RESIZE_BW = "resize-data/"
-PATH_RESIZED_LIST = "resize-data/resized_list.csv"
+PATH_IMAGES = "/image-data/gap_images/gap_"
+PATH_IMAGES_RESIZE_BW = "/resize-data/bw_resize/"
+PATH_RESIZED_LIST = "/resize-data/resized_list.csv"
 
 
 SIZE = 32, 32
