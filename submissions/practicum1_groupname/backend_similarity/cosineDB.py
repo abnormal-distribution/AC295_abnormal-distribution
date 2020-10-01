@@ -1,5 +1,5 @@
 from flask import Flask, request
-from .similarity import cosine_similarity
+from helper.similarity import cosine_similarity
 
 import json
 import base64

@@ -14,6 +14,17 @@ client = Client()
 PATH = "/data/metadata.csv"
 
 
+def verySimpleQuery(name, path=PATH, username=None, password=None):
+    metadata = dd.read_csv(path)  # Load database with Dask
+    try:
+        file_id = metadata.file_id[metadata.Title == name].compute().values[0]  # Get file_id for image
+
+        return file_id  # return static address
+
+    except IndexError:
+        return 'Painting not in the database'
+
+
 def simpleQuery(name, path=PATH, username=None, password=None):
     """
     This function searches for the string value contained in "name" variable for a match in the image name in the
