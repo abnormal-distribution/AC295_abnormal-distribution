@@ -19,6 +19,7 @@ spec:
         volumeMounts:
           - mountPath: /meta-data
             name: practicum-1-meta-data-volume
+            readOnly: true
         ports:
         - containerPort: 8082
       volumes:

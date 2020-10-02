@@ -19,17 +19,13 @@ spec:
         volumeMounts:
           - mountPath: /resize-data
             name: practicum-1-resize-data-volume
-          - mountPath: /image-data
-            name: practicum-1-images-volume
+            readOnly: true
         ports:
         - containerPort: 8083
       volumes:
         - name: practicum-1-resize-data-volume
           persistentVolumeClaim:
             claimName: practicum-1-resize-data-claim
-        - name: practicum-1-images-volume
-          persistentVolumeClaim:
-            claimName: practicum-1-images-disk-read-write-claim
 ---
 apiVersion: v1
 kind: Service

@@ -19,6 +19,7 @@ spec:
         volumeMounts:
           - mountPath: /image-data
             name: practicum-1-images-volume
+            readOnly: true
         env:
         - name: DB_HOST1
           valueFrom:

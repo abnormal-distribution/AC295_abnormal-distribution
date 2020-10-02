@@ -24,6 +24,9 @@ jupyter = "*"
 scikit-image = "*"
 dask-distance = "*"
 flask = "*"
+scikit-learn = "*"
+h5py = "*"
+dask-ml = "*"
 
 [requires]
 python_version = "3.7"
