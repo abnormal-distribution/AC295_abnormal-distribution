@@ -263,6 +263,30 @@ Setting for Image Result page
     padding: 10px;
 }
 
+/* -------------------------------------------------
+Displaying side by side images for cosine similarity
+-------------------------------------------------*/
+
+.image-result_ori{
+    position: absolute;
+    /*top: 50%;*/
+    left: 50%;
+    transform:  translate(-100%,50%);
+    height: 350px;
+    border-radius: 40px;
+    padding: 10px;
+}
+
+.image-result_sim{
+    position: absolute;
+    /*top: 50%;*/
+    left: 50%;
+    transform:  translate(0%,50%);
+    height: 350px;
+    border-radius: 40px;
+    padding: 10px;
+}
+
 @media screen and (max-width: 620px) {
 .searchBox:hover > .searchInput {
     width: 150px;
