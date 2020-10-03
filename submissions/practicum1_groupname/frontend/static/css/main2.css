@@ -1,12 +1,11 @@
 /*------------------------------------------------
 Controls the page setting and Background Image
 ------------------------------------------------*/
-@import "bourbon";
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,300);
 
 html {
     /*background-image: linear-gradient(to right , #cb2d3e , #ef473a);*/
-    background: url("{{ url_for('static', filename='images/museum.jpg') }}");
+    background: url(/static/images/museum.jpg);
     /*background-position: center;*/
     background-size: cover;
     background-repeat: no-repeat;
