@@ -38,7 +38,7 @@ Title / Headline
 
 .title {
     top: 25%;
-    font-size:35px;
+    font-size:40px;
     font-family: American Typewriter, serif;
 }
 
@@ -59,7 +59,7 @@ Upload Image to find similar Image
 
 .searchBox {
     position: absolute;
-    top: 40%;
+    top: 44%;
     left: 50%;
     transform:  translate(-50%,50%);
     background: #2f3640;
@@ -174,7 +174,7 @@ Upload Image to find similar Image
     border-radius: 40px;
 
     position: absolute;
-    top: 57%;
+    top: 53%;
     left: 50%;
     transform:  translate(-50%,50%);
     border-radius: 40px;
@@ -206,7 +206,7 @@ Button to go back to main page
 
 .backHome{
     position: absolute;
-    top: 18%;
+    top: 85%;
     left: 50%;
     transform:  translate(-50%,50%);
     /*background: #2f3640;*/

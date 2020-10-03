@@ -16,13 +16,11 @@ PATH_RESIZED_LIST = "resize-data/resized_list.csv"
 PATH_PCA_ARRAY = "resize-data/PCA_images_128.npy"
 PATH_PCA_MODEL = "resize-data/PCA_model_128.sav"
 """
-
-PATH_IMAGES = "../../data/gap_images/gap_"
-PATH_IMAGES_RESIZE_BW = "../backend_similarity/data/bw_resize/"
-# PATH_IMAGES_RESIZE_COL = "../../backend_similarity/data/col_resize/"
-PATH_RESIZED_LIST = "../../backend_similarity/data/resized_list.csv"
-PATH_PCA_ARRAY = "../backend_similarity/data/PCA_images_128.npy"
-PATH_PCA_MODEL = "../backend_similarity/data/PCA_model_128.sav"
+PATH_IMAGES = "/Users/rberi/Google Drive (Stanford GSB)/EdX & Coursera/HarvardX/Advanced Practical Data Science/AC295_abnormal-distribution/submissions/practicum1_groupname/image-data/gap_images/gap_"
+PATH_IMAGES_RESIZE_BW = "/Users/rberi/Google Drive (Stanford GSB)/EdX & Coursera/HarvardX/Advanced Practical Data Science/AC295_abnormal-distribution/submissions/practicum1_groupname/resize-data/bw_resize/"
+PATH_RESIZED_LIST = "/Users/rberi/Google Drive (Stanford GSB)/EdX & Coursera/HarvardX/Advanced Practical Data Science/AC295_abnormal-distribution/submissions/practicum1_groupname/resize-data/resized_list.csv"
+PATH_PCA_ARRAY = "/Users/rberi/Google Drive (Stanford GSB)/EdX & Coursera/HarvardX/Advanced Practical Data Science/AC295_abnormal-distribution/submissions/practicum1_groupname/resize-data/PCA_images_128.npy"
+PATH_PCA_MODEL = "/Users/rberi/Google Drive (Stanford GSB)/EdX & Coursera/HarvardX/Advanced Practical Data Science/AC295_abnormal-distribution/submissions/practicum1_groupname/resize-data/PCA_model_128.sav"
 
 
 N_COMPONENTS = 128
@@ -136,8 +134,6 @@ def cosine_dist(image):
     filename = sorted(glob(PATH_IMAGES_RESIZE_BW + "*.jpg"))
     filename = filename[id].replace(PATH_IMAGES_RESIZE_BW, "").replace(".jpg", "")
     
-    print(filename)
-    
     return filename
     
 
@@ -149,7 +145,11 @@ if __name__ == '__main__':
     print("Latent Space Calculated\n")
     
     filename = glob(PATH_IMAGES + "*.jpg")
-    filename = filename[np.random.randint(len(filename))].replace(PATH_IMAGES, "").replace(".jpg", "")
+    filename = filename[np.random.randint(len(filename))]
     
+    image = Image.open(filename)
+    
+    filename = filename.replace(PATH_IMAGES, "").replace(".jpg", "")
     print("File name given   :", filename)
-    print("Predicted Filename:", cosine_dist(filename))
+    
+    print("Predicted Filename:", cosine_dist(image))

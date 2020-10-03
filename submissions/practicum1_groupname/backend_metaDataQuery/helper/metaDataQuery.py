@@ -2,19 +2,8 @@ import dask.dataframe as dd
 
 
 """
-from gcsfs import GCSFileSystem
-from distributed import Client
-
-gcs = GCSFileSystem(project='gothic-space-289008')
-gcs.ls('ac295_rberi')
-client = Client()
-"""
-
-
-"""
 PATH = "/meta-data/metadata.csv"
 """
-
 PATH = 'gs://practicum1-abnormal-distribution/data/metadata.csv'
 
 
@@ -53,7 +42,7 @@ def simpleQuery(name, path=PATH, username=None, password=None):
     df = dd.read_csv(path)
     df = df.loc[df['Title'].str.contains(pat=name, case=False, na=False, regex=False)]
     
-    return df.to_json(compute=True)
+    return df.compute()
 
 
 def multiQuery(names, path=PATH):
@@ -99,6 +88,7 @@ def multiQuery(names, path=PATH):
     df = df.loc[mask]
     
     return df.compute()
+
 
 if __name__ == '__main__':
     print(simpleQuery("Sea"))

@@ -1,10 +1,10 @@
 from flask import Flask, request
-from helper.similarity import cosine_dist
 from PIL import Image
 from io import BytesIO
 
 import base64
 
+from helper.similarity import cosine_dist
 
 
 app = Flask(__name__)
@@ -16,7 +16,6 @@ def mainm():
         image = request.get_json()['image']  # Retrieve the image submitted by the user
         image = image.encode('ascii')
         image = base64.b64decode(image)
-
         image = Image.open(BytesIO(image))
         
         img_id = cosine_dist(image)
