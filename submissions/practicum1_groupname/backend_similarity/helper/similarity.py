@@ -19,7 +19,7 @@ PATH_PCA_MODEL = "resize-data/PCA_model_128.sav"
 
 PATH_IMAGES = "../../data/gap_images/gap_"
 PATH_IMAGES_RESIZE_BW = "../../backend_similarity/data/bw_resize/"
-PATH_IMAGES_RESIZE_COL = "../../backend_similarity/data/col_resize/"
+# PATH_IMAGES_RESIZE_COL = "../../backend_similarity/data/col_resize/"
 PATH_RESIZED_LIST = "../../backend_similarity/data/resized_list.csv"
 PATH_PCA_ARRAY = "../../backend_similarity/data/PCA_images_128.npy"
 PATH_PCA_MODEL = "../../backend_similarity/data/PCA_model_128.sav"
