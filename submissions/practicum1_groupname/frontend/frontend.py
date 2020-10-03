@@ -22,7 +22,7 @@ def mainm():
 def simpleSearch():
     if request.method == 'POST':  # User clicked submit button
         image_name = request.form['content'] # Get image name submitted by user
-        image_file = requests.post(url=db_url_1, json={'image_name': image_name}) # request image file from database
+        image_file = requests.post(url=db_url_2, json={'image_name': image_name}) # request image file from database
         #full_filename = 'http://0.0.0.0:32500' + image_file.content.decode("utf-8")
         return render_template('searchResult.html',
                                title=image_name,
