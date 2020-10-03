@@ -1,7 +1,8 @@
 from flask import Flask, request
-from helper.similarity import cosine_similarity
+from helper.similarity import cosine_dist
+from PIL import Image
+from io import BytesIO
 
-import json
 import base64
 
 
@@ -12,10 +13,13 @@ app = Flask(__name__)
 @app.route("/",methods=['POST','GET'])
 def mainm():
     if request.method == 'POST':
-        image = request.get_json()['image'] # Retrieve the image submitted by the user
-        image = base64.decode(image)
+        image = request.get_json()['image']  # Retrieve the image submitted by the user
+        image = image.encode('ascii')
+        image = base64.b64decode(image)
 
-        img_id = cosine_similarity(image)
+        image = Image.open(BytesIO(image))
+        
+        img_id = cosine_dist(image)
         
         return img_id
 

@@ -11,7 +11,11 @@ client = Client()
 """
 
 
+"""
 PATH = "/meta-data/metadata.csv"
+"""
+
+PATH = 'gs://practicum1-abnormal-distribution/data/metadata.csv'
 
 
 def verySimpleQuery(name, path=PATH, username=None, password=None):
@@ -52,7 +56,7 @@ def simpleQuery(name, path=PATH, username=None, password=None):
     return df.to_json(compute=True)
 
 
-def multiQuery(names, path=PATH, username=None, password=None):
+def multiQuery(names, path=PATH):
     """
     This function searches for the string value contained in "name" variable for a match in the image name in the
     meta data and returns the data-frame of image meta-data wherever image name contains such a string.
@@ -94,7 +98,7 @@ def multiQuery(names, path=PATH, username=None, password=None):
     df = dd.read_csv(path)
     df = df.loc[mask]
     
-    return df.to_json(compute=True)
+    return df.compute()
 
 if __name__ == '__main__':
     print(simpleQuery("Sea"))

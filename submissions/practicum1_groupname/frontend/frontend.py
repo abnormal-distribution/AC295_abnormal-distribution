@@ -1,13 +1,14 @@
 from flask import Flask, render_template, request
 import sys
 import requests
+
 from base64 import b64encode
 from gcsfs import GCSFileSystem
 
 app = Flask(__name__)
 
-gcs = GCSFileSystem(project='ac295-data-science-289004')
-gcs.ls('practicum1-abnormal-distribution')
+#gcs = GCSFileSystem(project='ac295-data-science-289004')
+#gcs.ls('practicum1-abnormal-distribution')
 
 google_metadata_dir = 'gs://practicum1-abnormal-distribution/data/metadata.csv'
 google_bucket_dir = 'https://storage.googleapis.com/practicum1-abnormal-distribution/static/gap_images/'
@@ -21,7 +22,7 @@ def mainm():
 def simpleSearch():
     if request.method == 'POST':  # User clicked submit button
         image_name = request.form['content'] # Get image name submitted by user
-        image_file = requests.post(url=db_url_1, json={'image_name': image_name}) # request image files from database
+        image_file = requests.post(url=db_url_2, json={'image_name': image_name}) # request image files from database
 
         file_id = [google_bucket_dir + "gap_" + image_file.content.decode("utf-8")+".jpg" for image_file in image_file['file_id']]
         title = image_file['title']
@@ -41,7 +42,7 @@ def uploadImage():
         uri = "data:%s;base64,%s" % (mime, imgbase64)
 
         # request image file from database
-        image_file = requests.post(url=db_url_2, json={'image': imgbase64}) 
+        image_file = requests.post(url=db_url_1, json={'image': imgbase64})
         final_address = google_bucket_dir + "gap_" + image_file.content.decode("utf-8")+".jpg"
         return render_template("similarityResult.html", similar_image_url = final_address,
             image_url=uri, title="Uploaded Image")

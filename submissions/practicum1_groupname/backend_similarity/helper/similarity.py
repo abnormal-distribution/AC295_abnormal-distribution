@@ -1,33 +1,31 @@
 import pickle
 import numpy as np
 import pandas as pd
-import dask_image.imread as di
-import dask.array as da
 
 from PIL import Image
 from glob import glob
 from joblib import Parallel, delayed
 from sklearn.metrics.pairwise import cosine_similarity
-from dask_ml.decomposition import PCA
+from sklearn.decomposition import PCA
 
 
 """
 PATH_IMAGES = "image-data/gap_images/gap_"
 PATH_IMAGES_RESIZE_BW = "resize-data/bw_resize/"
 PATH_RESIZED_LIST = "resize-data/resized_list.csv"
-PATH_PCA_ARRAY = "resize-data/PCA_array"
-PATH_TEMP = "resize-data"
+PATH_PCA_ARRAY = "resize-data/PCA_images_128.npy"
+PATH_PCA_MODEL = "resize-data/PCA_model_128.sav"
 """
 
 PATH_IMAGES = "../../data/gap_images/gap_"
-PATH_IMAGES_RESIZE_BW = "../../backend_similarity/data/bw_resize/"
-PATH_IMAGES_RESIZE_COL = "../../backend_similarity/data/col_resize/"
+PATH_IMAGES_RESIZE_BW = "../backend_similarity/data/bw_resize/"
+# PATH_IMAGES_RESIZE_COL = "../../backend_similarity/data/col_resize/"
 PATH_RESIZED_LIST = "../../backend_similarity/data/resized_list.csv"
-PATH_PCA_ARRAY = "../../backend_similarity/data/PCA_array"
-PATH_PCA_MODEL = "../../backend_similarity/data/PCA_model_64.sav"
+PATH_PCA_ARRAY = "../backend_similarity/data/PCA_images_128.npy"
+PATH_PCA_MODEL = "../backend_similarity/data/PCA_model_128.sav"
 
 
-N_COMPONENTS = 64
+N_COMPONENTS = 128
 SIZE = 128, 128
 
 
@@ -45,7 +43,7 @@ def resize_library(size=SIZE):
     except:
         pass
     
-    Parallel(n_jobs=-1)(delayed(resize_image)(filename, size, save=True) for filename in filenames)
+    Parallel(n_jobs=-1)(delayed(resize_image)(file, size, save=True) for file in filenames)
     
     return True
 
@@ -67,7 +65,7 @@ def resize_color(image_in, size, img, save=False):
         return image
 
 
-def resize_bw(image_in, size, img, save=False):
+def resize_bw(image_in, size, img=None, save=False):
     """This functions re-sizes a color/grayscale image into new size and grayscale"""
 
     image = image_in.convert('L').resize(size)
@@ -100,13 +98,22 @@ def compute_library_latent_space():
     try:
         f = open(PATH_PCA_MODEL, 'rb')
         f.close()
+        
     except FileNotFoundError:
         pca = PCA(n_components=N_COMPONENTS)
         
-        df_bw = di.imread(PATH_IMAGES_RESIZE_BW + '*.jpg').reshape(-1, SIZE[0] * SIZE[1])
-        df_bw = pca.fit_transform(df_bw)
+        images = []
         
-        da.to_npy_stack(PATH_PCA_ARRAY, df_bw)
+        filename = sorted(glob(PATH_IMAGES_RESIZE_BW + "*.jpg"))
+        for file in filename:
+            img = np.asarray(Image.open(file)).reshape(-1)
+            images.append(img)
+        
+        images = np.array(images)
+        images = pca.fit_transform(images)
+        
+        
+        np.save(PATH_PCA_ARRAY, images)
         pickle.dump(pca, open(PATH_PCA_MODEL, 'wb'))
     
 
@@ -117,28 +124,32 @@ def cosine_dist(image):
     pca = pickle.load(f)
     f.close()
     
-    img_bw = resize_image(image, size=SIZE)
+    img_bw = resize_bw(image, size=SIZE)
     img_bw = np.asarray(img_bw).reshape(1, (SIZE[0] * SIZE[1]))
     img_bw = pca.transform(img_bw).reshape(1, -1)
     
-    df_bw = da.from_npy_stack(PATH_PCA_ARRAY, mmap_mode='r')
+    df_bw = np.load(PATH_PCA_ARRAY)
+    
     bw_cos_sim = cosine_similarity(df_bw, img_bw)
     id = bw_cos_sim.argmax()
     
-    filenames = sorted(glob(PATH_IMAGES_RESIZE_BW + "*.jpg"))
-    print("at the last step")
-    return filenames[id].replace(PATH_IMAGES_RESIZE_BW, "").replace(".jpg", "")
+    filename = sorted(glob(PATH_IMAGES_RESIZE_BW + "*.jpg"))
+    filename = filename[id].replace(PATH_IMAGES_RESIZE_BW, "").replace(".jpg", "")
     
-
+    print(filename)
+    
+    return filename
+    
 
 if __name__ == '__main__':
     resize_library()
-    print("Resize Done")
+    print("Resize Done\n")
     
     compute_library_latent_space()
-    print("Latent Space Calculated")
+    print("Latent Space Calculated\n")
     
-    filename = glob(PATH_IMAGES + "11112.jpg")
+    filename = glob(PATH_IMAGES + "*.jpg")
     filename = filename[np.random.randint(len(filename))].replace(PATH_IMAGES, "").replace(".jpg", "")
     
-    print(cosine_dist(filename))
+    print("File name given   :", filename)
+    print("Predicted Filename:", cosine_dist(filename))
