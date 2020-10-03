@@ -2,11 +2,11 @@ from flask import Flask, request
 
 from helper.metaDataQuery import multiQuery
 
-
+""""
 PATH = "/meta-data/metadata.csv"
 """
 PATH = 'gs://practicum1-abnormal-distribution/data/metadata.csv'
-"""
+
 
 
 app = Flask(__name__)
@@ -27,4 +27,4 @@ def mainm():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=8083, debug=True)
+    app.run(host='0.0.0.0', port=8082, debug=True)
