@@ -3,10 +3,10 @@ from flask import Flask, request
 from helper.metaDataQuery import multiQuery
 
 
-"""
 PATH = "/meta-data/metadata.csv"
 """
 PATH = 'gs://practicum1-abnormal-distribution/data/metadata.csv'
+"""
 
 
 app = Flask(__name__)

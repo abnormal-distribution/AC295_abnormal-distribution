@@ -9,7 +9,6 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.decomposition import PCA
 
 
-"""
 PATH_IMAGES = "image-data/gap_images/gap_"
 PATH_IMAGES_RESIZE_BW = "resize-data/bw_resize/"
 PATH_RESIZED_LIST = "resize-data/resized_list.csv"
@@ -21,6 +20,7 @@ PATH_IMAGES_RESIZE_BW = "/Users/rberi/Google Drive (Stanford GSB)/EdX & Coursera
 PATH_RESIZED_LIST = "/Users/rberi/Google Drive (Stanford GSB)/EdX & Coursera/HarvardX/Advanced Practical Data Science/AC295_abnormal-distribution/submissions/practicum1_groupname/resize-data/resized_list.csv"
 PATH_PCA_ARRAY = "/Users/rberi/Google Drive (Stanford GSB)/EdX & Coursera/HarvardX/Advanced Practical Data Science/AC295_abnormal-distribution/submissions/practicum1_groupname/resize-data/PCA_images_128.npy"
 PATH_PCA_MODEL = "/Users/rberi/Google Drive (Stanford GSB)/EdX & Coursera/HarvardX/Advanced Practical Data Science/AC295_abnormal-distribution/submissions/practicum1_groupname/resize-data/PCA_model_128.sav"
+"""
 
 
 N_COMPONENTS = 128
