@@ -18,11 +18,11 @@ PATH_PCA_MODEL = "resize-data/PCA_model_128.sav"
 """
 
 PATH_IMAGES = "../../data/gap_images/gap_"
-PATH_IMAGES_RESIZE_BW = "../../backend_similarity/data/bw_resize/"
+PATH_IMAGES_RESIZE_BW = "../backend_similarity/data/bw_resize/"
 # PATH_IMAGES_RESIZE_COL = "../../backend_similarity/data/col_resize/"
 PATH_RESIZED_LIST = "../../backend_similarity/data/resized_list.csv"
-PATH_PCA_ARRAY = "../../backend_similarity/data/PCA_images_128.npy"
-PATH_PCA_MODEL = "../../backend_similarity/data/PCA_model_128.sav"
+PATH_PCA_ARRAY = "../backend_similarity/data/PCA_images_128.npy"
+PATH_PCA_MODEL = "../backend_similarity/data/PCA_model_128.sav"
 
 
 N_COMPONENTS = 128
@@ -65,7 +65,7 @@ def resize_color(image_in, size, img, save=False):
         return image
 
 
-def resize_bw(image_in, size, img, save=False):
+def resize_bw(image_in, size, img=None, save=False):
     """This functions re-sizes a color/grayscale image into new size and grayscale"""
 
     image = image_in.convert('L').resize(size)
@@ -124,7 +124,7 @@ def cosine_dist(image):
     pca = pickle.load(f)
     f.close()
     
-    img_bw = resize_image(image, size=SIZE)
+    img_bw = resize_bw(image, size=SIZE)
     img_bw = np.asarray(img_bw).reshape(1, (SIZE[0] * SIZE[1]))
     img_bw = pca.transform(img_bw).reshape(1, -1)
     
@@ -133,9 +133,12 @@ def cosine_dist(image):
     bw_cos_sim = cosine_similarity(df_bw, img_bw)
     id = bw_cos_sim.argmax()
     
-    filenames = sorted(glob(PATH_IMAGES_RESIZE_BW + "*.jpg"))
+    filename = sorted(glob(PATH_IMAGES_RESIZE_BW + "*.jpg"))
+    filename = filename[id].replace(PATH_IMAGES_RESIZE_BW, "").replace(".jpg", "")
     
-    return filenames[id].replace(PATH_IMAGES_RESIZE_BW, "").replace(".jpg", "")
+    print(filename)
+    
+    return filename
     
 
 if __name__ == '__main__':
