@@ -5,6 +5,13 @@ from base64 import b64encode
 
 app = Flask(__name__)
 
+gcs = GCSFileSystem(project='ac295-data-science-289004')
+gcs.ls('practicum1-abnormal-distribution')
+
+google_metadata_dir = 'gs://practicum1-abnormal-distribution/data/metadata.csv'
+google_bucket_dir = 'https://storage.googleapis.com/practicum1-abnormal-distribution/static/gap_images/'
+
+
 @app.route("/", methods=['POST', 'GET'])
 def mainm():
     return render_template('index.html') # first page 
@@ -24,11 +31,17 @@ def simpleSearch():
 @app.route('/upload', methods=['POST', 'GET'])
 def uploadImage():
     if request.method == 'POST':
+        # encoding the uploaded image to base64
         encoded = b64encode(request.files['file'].read())
         imgbase64 = encoded.decode('ascii')
         mime = "image/jpeg"
         uri = "data:%s;base64,%s" % (mime, imgbase64)
-        return render_template("searchResult.html", image_url=uri, title="Uploaded Image")
+
+        # request image file from database
+        image_file = requests.post(url=db_url_2, json={'image_name': imgbase64}) 
+        final_address = google_bucket_dir + "gap_" + image_file.content.decode("utf-8")+".jpg"
+        return render_template("similarityResult.html", similar_image_url = final_address,
+            image_url=uri, title="Uploaded Image")
     else:
         print("This is the get method.")
 
