@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
 from base64 import b64encode
-from PIL import Image
 
 import numpy as np
 
