@@ -11,6 +11,7 @@ from sklearn.decomposition import PCA
 
 PATH_IMAGES = "image-data/gap_images/gap_"
 PATH_IMAGES_RESIZE_BW = "resize-data/bw_resize/"
+PATH_IMAGES_RESIZE_COL = "resize-data/col_resize/"
 PATH_RESIZED_LIST = "resize-data/resized_list.csv"
 PATH_PCA_ARRAY = "resize-data/PCA_images_128.npy"
 PATH_PCA_MODEL = "resize-data/PCA_model_128.sav"

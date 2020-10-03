@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from base64 import b64encode
+from PIL import Image
 
 import numpy as np
 
@@ -7,9 +8,10 @@ import sys
 import requests
 
 
-PATH = "images-data/gap_images/"
+PATH = "image-data/gap_images/"
 """
 PATH = 'https://storage.googleapis.com/practicum1-abnormal-distribution/static/gap_images/'
+PATH = "/Users/rberi/Google Drive (Stanford GSB)/EdX & Coursera/HarvardX/Advanced Practical Data Science/AC295_abnormal-distribution/submissions/practicum1_groupname/image-data/gap_images/"
 """
 
 
@@ -24,15 +26,21 @@ def mainm():
 @app.route('/search', methods=['POST', 'GET'])
 def simpleSearch():
     if request.method == 'POST':  # User clicked submit button
-        image_name = request.form['content'] # Get image name submitted by user
-        image_file = requests.post(url=db_url_1, json={'image_name': image_name}) # request image files from database
+        image_name = request.form['content']  # Get image name submitted by user
+        image_file = requests.post(url=db_url_1, json={'image_name': image_name})  # request image files from database
         image_file = image_file.json()
         
         file_id = [PATH + image for image in image_file['file_id'][:5]]
         title = image_file['Title'][:5]
         numberings = np.arange(len(file_id))
         
-        return render_template('searchResult.html', numberings = numberings, images=zip(numberings,file_id,title))
+        img = []
+        for file in file_id:
+            with open(file, "rb") as f:
+                encoded_string = b64encode(f.read())
+                img.append("data:image/jpeg;base64;+encoded_string")
+        
+        return render_template('searchResult.html', numberings=numberings, images=zip(numberings, img, title))
 
     else:
         print("This is the get method.")
@@ -50,9 +58,16 @@ def uploadImage():
         # request image file from database
         image_file = requests.post(url=db_url_2, json={'image': imgbase64})
         final_address = PATH + "gap_" + image_file.content.decode("utf-8")+".jpg"
+
+
+        with open(final_address, "rb") as f:
+            final_address = b64encode(f.read())
         
-        return render_template("similarityResult.html", similar_image_url = final_address,
-            image_url=uri, title="Uploaded Image")
+        return render_template(
+            "similarityResult.html",
+            similar_image_url=final_address,
+            image_url=uri,
+            title="Uploaded Image")
     
     else:
         print("This is the get method.")
