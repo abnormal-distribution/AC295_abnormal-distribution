@@ -1,5 +1,5 @@
 from flask import Flask, request
-from helper.similarity import cosine_similarity
+from helper.similarity import cosine_dist
 
 import json
 import base64
@@ -15,7 +15,7 @@ def mainm():
         image = request.get_json()['image'] # Retrieve the image submitted by the user
         image = base64.decode(image)
 
-        img_id = cosine_similarity(image)
+        img_id = cosine_dist(image)
         
         return img_id
 

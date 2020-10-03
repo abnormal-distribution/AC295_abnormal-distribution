@@ -43,7 +43,7 @@ def resize_library(size=SIZE):
     except:
         pass
     
-    Parallel(n_jobs=-1)(delayed(resize_image)(filename, size, save=True) for filename in filenames)
+    Parallel(n_jobs=-1)(delayed(resize_image)(file, size, save=True) for file in filenames)
     
     return True
 
