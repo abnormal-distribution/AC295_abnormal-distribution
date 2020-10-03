@@ -36,8 +36,11 @@ def simpleSearch():
         img = []
         for file in file_id:
             with open(file, "rb") as f:
-                encoded_string = b64encode(f.read())
-                img.append(encoded_string)
+                encoded = b64encode(f.read())
+                imgbase64 = encoded.decode('ascii')
+                mime = "image/jpeg"
+                final_uri = "data:%s;base64,%s" % (mime, imgbase64)
+                img.append(final_uri)
         
         return render_template('searchResult.html', numberings=numberings, images=zip(numberings, img, title))
 
@@ -58,13 +61,15 @@ def uploadImage():
         image_file = requests.post(url=db_url_2, json={'image': imgbase64})
         final_address = PATH + "gap_" + image_file.content.decode("utf-8")+".jpg"
 
-
         with open(final_address, "rb") as f:
-            final_address = b64encode(f.read())
+            encoded = b64encode(f.read())
+            imgbase64 = encoded.decode('ascii')
+            mime = "image/jpeg"
+            final_uri = "data:%s;base64,%s" % (mime, imgbase64)
         
         return render_template(
             "similarityResult.html",
-            similar_image_url=final_address,
+            similar_image_url=final_uri,
             image_url=uri,
             title="Uploaded Image")
     
