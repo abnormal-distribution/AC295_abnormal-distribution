@@ -185,5 +185,9 @@ submissions/practicum1_groupname/webappdatabase/static/gap_images/*
 data
 data/**/
 **/data/**
+**/image-data/**
+**/resize-data/**
+**/meta-data/**
+
 
 .DS_Store
