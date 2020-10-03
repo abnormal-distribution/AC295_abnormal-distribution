@@ -6,11 +6,11 @@ import numpy as np
 import sys
 import requests
 
-""""
+
 PATH = "images-data/gap_images/"
 """
 PATH = 'https://storage.googleapis.com/practicum1-abnormal-distribution/static/gap_images/'
-
+"""
 
 
 app = Flask(__name__)
