@@ -25,7 +25,7 @@ def mainm():
 def simpleSearch():
     if request.method == 'POST':  # User clicked submit button
         image_name = request.form['content'] # Get image name submitted by user
-        image_file = requests.post(url=db_url_2, json={'image_name': image_name}) # request image files from database
+        image_file = requests.post(url=db_url_1, json={'image_name': image_name}) # request image files from database
         image_file = image_file.json()
         
         file_id = [PATH + image for image in image_file['file_id'][:5]]
@@ -48,7 +48,7 @@ def uploadImage():
         uri = "data:%s;base64,%s" % (mime, imgbase64)
 
         # request image file from database
-        image_file = requests.post(url=db_url_1, json={'image': imgbase64})
+        image_file = requests.post(url=db_url_2, json={'image': imgbase64})
         final_address = PATH + "gap_" + image_file.content.decode("utf-8")+".jpg"
         
         return render_template("similarityResult.html", similar_image_url = final_address,

@@ -16,4 +16,4 @@ COPY . .
 RUN pip3 install -r requirements.txt
 
 # Run our python script/application in the Docker container.
-CMD python ./frontend.py $DB_HOST2 $DB_HOST1
+CMD python ./frontend.py $DB_HOST1 $DB_HOST2
