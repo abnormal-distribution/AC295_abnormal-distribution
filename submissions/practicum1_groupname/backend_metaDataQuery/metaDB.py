@@ -1,14 +1,15 @@
 from flask import Flask, request
 from helper.metaDataQuery import multiQuery
-from gcsfs import GCSFileSystem
+#from gcsfs import GCSFileSystem
 
 app = Flask(__name__)
 
-gcs = GCSFileSystem(project='ac295-data-science-289004')
-gcs.ls('practicum1-abnormal-distribution')
+
+#gcs = GCSFileSystem(project='ac295-data-science-289004')
+#gcs.ls('practicum1-abnormal-distribution')
 
 google_metadata_dir = 'gs://practicum1-abnormal-distribution/data/metadata.csv'
-google_bucket_dir = 'https://storage.googleapis.com/practicum1-abnormal-distribution/static/gap_images/'
+#google_bucket_dir = 'https://storage.googleapis.com/practicum1-abnormal-distribution/static/gap_images/'
 
 
 @app.route("/", methods=['POST', 'GET'])

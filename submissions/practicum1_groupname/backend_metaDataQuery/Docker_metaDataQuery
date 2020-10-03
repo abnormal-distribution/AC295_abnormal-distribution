@@ -3,7 +3,7 @@
 FROM python:3.7-slim-buster
 
 # This exposes the port 8082 so that that Docker container can receive requests through this port.
-EXPOSE 8082
+EXPOSE 8083
 
 # Copy our python script over to the Docker container.
 COPY . .

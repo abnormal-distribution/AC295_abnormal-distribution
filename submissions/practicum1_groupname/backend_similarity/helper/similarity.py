@@ -8,6 +8,10 @@ from joblib import Parallel, delayed
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.decomposition import PCA
 
+from gcsfs import GCSFileSystem
+
+gcs = GCSFileSystem(project='ac295-data-science-289004')
+gcs.ls('practicum1-abnormal-distribution')
 
 """
 PATH_IMAGES = "image-data/gap_images/gap_"
@@ -17,6 +21,7 @@ PATH_PCA_ARRAY = "resize-data/PCA_images_128.npy"
 PATH_PCA_MODEL = "resize-data/PCA_model_128.sav"
 """
 
+
 PATH_IMAGES = "../../data/gap_images/gap_"
 PATH_IMAGES_RESIZE_BW = "../backend_similarity/data/bw_resize/"
 # PATH_IMAGES_RESIZE_COL = "../../backend_similarity/data/col_resize/"
@@ -24,6 +29,14 @@ PATH_RESIZED_LIST = "../../backend_similarity/data/resized_list.csv"
 PATH_PCA_ARRAY = "../backend_similarity/data/PCA_images_128.npy"
 PATH_PCA_MODEL = "../backend_similarity/data/PCA_model_128.sav"
 
+
+google_data_dir = 'gs://practicum1-abnormal-distribution/data/'
+#PATH_IMAGES = "gs://practicum1-abnormal-distribution/static/gap_images/gap_"
+PATH_IMAGES_RESIZE_BW_CLOUD = google_data_dir + "bw_resize/"
+# PATH_IMAGES_RESIZE_COL = "../../backend_similarity/data/col_resize/"
+#PATH_RESIZED_LIST = google_data_dir + "resized_list.csv"
+PATH_PCA_ARRAY_CLOUD = google_data_dir + "PCA_images_128.npy"
+PATH_PCA_MODEL_CLOUD = google_data_dir + "PCA_model_128.sav"
 
 N_COMPONENTS = 128
 SIZE = 128, 128
@@ -117,10 +130,16 @@ def compute_library_latent_space():
         pickle.dump(pca, open(PATH_PCA_MODEL, 'wb'))
     
 
-def cosine_dist(image):
+def cosine_dist(image, instance='cloud'):
     """This functions computes cosine similarity between images in the database and the image provided by the user"""
 
-    f = open(PATH_PCA_MODEL, 'rb')
+    if instance == 'cloud':
+        f = gcs.open(PATH_PCA_MODEL_CLOUD, 'rb')
+        df_bw = np.load(gcs.open(PATH_PCA_ARRAY_CLOUD, 'rb'))
+    else:
+        f = open(PATH_PCA_MODEL, 'rb')
+        df_bw = np.load(PATH_PCA_ARRAY)
+
     pca = pickle.load(f)
     f.close()
     
@@ -128,18 +147,17 @@ def cosine_dist(image):
     img_bw = np.asarray(img_bw).reshape(1, (SIZE[0] * SIZE[1]))
     img_bw = pca.transform(img_bw).reshape(1, -1)
     
-    df_bw = np.load(PATH_PCA_ARRAY)
-    
     bw_cos_sim = cosine_similarity(df_bw, img_bw)
     id = bw_cos_sim.argmax()
-    
-    filename = sorted(glob(PATH_IMAGES_RESIZE_BW + "*.jpg"))
-    filename = filename[id].replace(PATH_IMAGES_RESIZE_BW, "").replace(".jpg", "")
-    
-    print(filename)
-    
-    return filename
-    
+
+    if instance == 'cloud':
+        filename = sorted(gcs.glob(PATH_IMAGES_RESIZE_BW_CLOUD + "*.jpg"))
+        return filename[id][-9:-4]
+    else:
+        filename = sorted(glob(PATH_IMAGES_RESIZE_BW + "*.jpg"))
+        filename = filename[id].replace(PATH_IMAGES_RESIZE_BW, "").replace(".jpg", "")
+        return filename
+
 
 if __name__ == '__main__':
     resize_library()

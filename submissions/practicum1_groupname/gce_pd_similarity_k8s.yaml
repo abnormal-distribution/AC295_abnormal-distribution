@@ -5,7 +5,7 @@ metadata:
   name: practicum1-resize-data
 spec:
   capacity:
-    storage: 10Gi
+    storage: 1Gi
   accessModes:
     - ReadOnlyMany
   claimRef:
@@ -25,7 +25,7 @@ metadata:
 spec:
   resources:
       requests:
-        storage: 10Gi
+        storage: 1Gi
   accessModes:
     - ReadOnlyMany
   storageClassName: ""

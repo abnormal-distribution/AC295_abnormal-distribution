@@ -9,3 +9,4 @@ dask[array] == 2.28.0
 joblib == 0.16.0
 pillow == 7.2.0
 gcsfs==0.7.1
+scikit-learn==0.23.2

@@ -14,18 +14,19 @@ spec:
     spec:               #What state you desire for the object
       containers:
       - name: simidb-container
-        image: gcr.io/gothic-space-289008/simidatabase:db
+        #image: gcr.io/gothic-space-289008/simidatabase:db
+        image: simidatabase:db
         imagePullPolicy: IfNotPresent
-        volumeMounts:
-          - mountPath: /resize-data
-            name: practicum-1-resize-data-volume
-            readOnly: true
+        #volumeMounts:
+        #  - mountPath: /resize-data
+        #    name: practicum-1-resize-data-volume
+        #    readOnly: true
         ports:
-        - containerPort: 8083
-      volumes:
-        - name: practicum-1-resize-data-volume
-          persistentVolumeClaim:
-            claimName: practicum-1-resize-data-claim
+        - containerPort: 8082
+      #volumes:
+      #  - name: practicum-1-resize-data-volume
+      #    persistentVolumeClaim:
+      #      claimName: practicum-1-resize-data-claim
 ---
 apiVersion: v1
 kind: Service
@@ -36,5 +37,5 @@ spec:
         app: simidb-app
     ports:
       - protocol: TCP
-        port: 8083
-        targetPort: 8083
+        port: 8082
+        targetPort: 8082

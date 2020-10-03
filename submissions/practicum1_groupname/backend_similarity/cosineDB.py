@@ -18,8 +18,8 @@ def mainm():
         image = base64.b64decode(image)
 
         image = Image.open(BytesIO(image))
-        
-        img_id = cosine_dist(image)
+
+        img_id = cosine_dist(image, instance='cloud')
         
         return img_id
 

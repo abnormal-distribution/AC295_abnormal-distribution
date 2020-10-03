@@ -3,7 +3,7 @@ import sys
 import requests
 import numpy as np
 from base64 import b64encode
-from gcsfs import GCSFileSystem
+#from gcsfs import GCSFileSystem
 
 app = Flask(__name__)
 
