@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import sys
 import requests
 from base64 import b64encode
+from gcsfs import GCSFileSystem
 
 app = Flask(__name__)
 
@@ -20,11 +21,13 @@ def mainm():
 def simpleSearch():
     if request.method == 'POST':  # User clicked submit button
         image_name = request.form['content'] # Get image name submitted by user
-        image_file = requests.post(url=db_url_1, json={'image_name': image_name}) # request image file from database
-        #full_filename = 'http://0.0.0.0:32500' + image_file.content.decode("utf-8")
-        return render_template('searchResult.html',
-                               title=image_name,
-                               image_url=image_file.content.decode("utf-8")) # render html with image
+        image_file = requests.post(url=db_url_1, json={'image_name': image_name}) # request image files from database
+
+        file_id = [google_bucket_dir + "gap_" + image_file.content.decode("utf-8")+".jpg" for image_file in image_file['file_id']]
+        title = image_file['title']
+        numberings = np.arange(len(file_id))
+        return render_template('searchResult.html', numberings = numberings, images=zip(numberings,file_id,title))
+
     else:
         print("This is the get method.")
 
@@ -38,7 +41,7 @@ def uploadImage():
         uri = "data:%s;base64,%s" % (mime, imgbase64)
 
         # request image file from database
-        image_file = requests.post(url=db_url_2, json={'image_name': imgbase64}) 
+        image_file = requests.post(url=db_url_2, json={'image': imgbase64}) 
         final_address = google_bucket_dir + "gap_" + image_file.content.decode("utf-8")+".jpg"
         return render_template("similarityResult.html", similar_image_url = final_address,
             image_url=uri, title="Uploaded Image")

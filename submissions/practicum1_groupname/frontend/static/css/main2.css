@@ -37,18 +37,18 @@ Title / Headline
 }
 
 .title {
-    top: 22%;
+    top: 25%;
     font-size:35px;
     font-family: American Typewriter, serif;
 }
 
 .subtitle1 {
-    top: 32%;
+    top: 35%;
     font-size: 18px;
 }
 
 .subtitle2 {
-    top: 48%;
+    top: 52%;
     font-size: 18px;
 }
 
@@ -59,11 +59,11 @@ Upload Image to find similar Image
 
 .searchBox {
     position: absolute;
-    top: 43%;
+    top: 40%;
     left: 50%;
     transform:  translate(-50%,50%);
     background: #2f3640;
-    height: 40px;
+    /*height: 40px;*/
     border-radius: 40px;
     padding: 10px;
 
@@ -174,7 +174,7 @@ Upload Image to find similar Image
     border-radius: 40px;
 
     position: absolute;
-    top: 60%;
+    top: 57%;
     left: 50%;
     transform:  translate(-50%,50%);
     border-radius: 40px;
@@ -206,7 +206,7 @@ Button to go back to main page
 
 .backHome{
     position: absolute;
-    top: 75%;
+    top: 18%;
     left: 50%;
     transform:  translate(-50%,50%);
     /*background: #2f3640;*/
@@ -224,7 +224,7 @@ Setting for Image Result page
 
 .image-title {
     position: absolute;
-    /*top: 25%;*/
+    top: 10%;
     left: 50%;
     transform:  translate(-50%,50%);
     /*background: #2f3640;*/
@@ -260,6 +260,21 @@ Setting for Image Result page
     height: 350px;
     border-radius: 40px;
     padding: 10px;
+}
+
+.carousel {
+  max-height: 500px;
+  overflow: hidden;
+
+  .item img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.carousel-caption {
+    top: 0;
+    bottom: auto;
 }
 
 /* -------------------------------------------------
