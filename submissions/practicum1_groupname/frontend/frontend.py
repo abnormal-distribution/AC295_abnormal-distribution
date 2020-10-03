@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 import sys
 import requests
-
+import numpy as np
 from base64 import b64encode
 from gcsfs import GCSFileSystem
 
@@ -23,9 +23,9 @@ def simpleSearch():
     if request.method == 'POST':  # User clicked submit button
         image_name = request.form['content'] # Get image name submitted by user
         image_file = requests.post(url=db_url_2, json={'image_name': image_name}) # request image files from database
-
-        file_id = [google_bucket_dir + "gap_" + image_file.content.decode("utf-8")+".jpg" for image_file in image_file['file_id']]
-        title = image_file['title']
+        image_file = image_file.json()
+        file_id = [google_bucket_dir + image for image in image_file['file_id'][:5]]
+        title = image_file['Title'][:5]
         numberings = np.arange(len(file_id))
         return render_template('searchResult.html', numberings = numberings, images=zip(numberings,file_id,title))
 
