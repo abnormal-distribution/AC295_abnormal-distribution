@@ -38,7 +38,7 @@ def simpleSearch():
         for file in file_id:
             with open(file, "rb") as f:
                 encoded_string = b64encode(f.read())
-                img.append("data:image/jpeg;base64;+encoded_string")
+                img.append(encoded_string)
         
         return render_template('searchResult.html', numberings=numberings, images=zip(numberings, img, title))
 
