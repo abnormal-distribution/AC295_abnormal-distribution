@@ -14,8 +14,9 @@ spec:
     spec:
       containers:
       - name: frontend-container
+        image: gcr.io/ac295-data-science-289004/frontend:fe
         #image: gcr.io/gothic-space-289008/frontend:fe
-        image: frontend:fe
+        #image: frontend:fe
         imagePullPolicy: IfNotPresent
         #volumeMounts:
         #  - mountPath: /image-data

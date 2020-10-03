@@ -14,8 +14,9 @@ spec:
     spec:               #What state you desire for the object
       containers:
       - name: simidb-container
+        image: gcr.io/ac295-data-science-289004/simidatabase:db
         #image: gcr.io/gothic-space-289008/simidatabase:db
-        image: simidatabase:db
+        #image: simidatabase:db
         imagePullPolicy: IfNotPresent
         #volumeMounts:
         #  - mountPath: /resize-data

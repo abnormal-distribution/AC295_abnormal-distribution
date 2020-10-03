@@ -14,8 +14,9 @@ spec:
     spec:               #What state you desire for the object
       containers:
       - name: metadb-container
+        image: gcr.io/ac295-data-science-289004/metadatabase:db
         #image: gcr.io/gothic-space-289008/metadatabase:db
-        image: metadatabase:db
+        #image: metadatabase:db
         imagePullPolicy: IfNotPresent
         #volumeMounts:
         #  - mountPath: /meta-data
