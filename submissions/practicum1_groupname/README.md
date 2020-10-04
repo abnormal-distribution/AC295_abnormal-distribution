@@ -73,6 +73,9 @@ gcloud container clusters create practicum-1-cluster --num-nodes 3 --zone <zone>
 ```
 
 ### Step 8: Apply Secrets
+* Before apply the secrets, update the username and password in ```gce_secrets_k8s.yaml```
+* Username and password should be specified in ```base64``` format
+* You can generate that with the command ```echo -n <username> | base64``` on the shell
 ```
 kubectl apply -f gce_secrets_k8s.yaml
 ```
