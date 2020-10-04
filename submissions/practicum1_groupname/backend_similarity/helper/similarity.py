@@ -7,6 +7,7 @@ from glob import glob
 from joblib import Parallel, delayed
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.decomposition import PCA
+from tensorflow.keras.models import load_model
 
 
 PATH_IMAGES = "image-data/gap_images/gap_"
@@ -15,6 +16,8 @@ PATH_IMAGES_RESIZE_COL = "resize-data/col_resize/"
 PATH_RESIZED_LIST = "resize-data/resized_list.csv"
 PATH_PCA_ARRAY = "resize-data/PCA_images_128.npy"
 PATH_PCA_MODEL = "resize-data/PCA_model_128.sav"
+PATH_ENCODER_MODEL = "resize-data/conv_encoder.h5"
+PATH_ENCODED_IMAGES = "resize-data/conv_encoding.npy"
 """
 PATH_IMAGES = "/Users/rberi/Google Drive (Stanford GSB)/EdX & Coursera/HarvardX/Advanced Practical Data Science/AC295_abnormal-distribution/submissions/practicum1_groupname/image-data/gap_images/gap_"
 PATH_IMAGES_RESIZE_BW = "/Users/rberi/Google Drive (Stanford GSB)/EdX & Coursera/HarvardX/Advanced Practical Data Science/AC295_abnormal-distribution/submissions/practicum1_groupname/resize-data/bw_resize/"
@@ -119,15 +122,13 @@ def compute_library_latent_space():
 def cosine_dist(image):
     """This functions computes cosine similarity between images in the database and the image provided by the user"""
 
-    f = open(PATH_PCA_MODEL, 'rb')
-    pca = pickle.load(f)
-    f.close()
-    
+    autoencoder = load_model(PATH_ENCODER_MODEL)
+
     img_bw = resize_bw(image, size=SIZE)
-    img_bw = np.asarray(img_bw).reshape(1, (SIZE[0] * SIZE[1]))
-    img_bw = pca.transform(img_bw).reshape(1, -1)
-    
-    df_bw = np.load(PATH_PCA_ARRAY)
+    img_bw = np.asarray(img_bw).reshape((1, SIZE[0], SIZE[1], 1))/255.0
+    img_bw = autoencoder.predict(img_bw).reshape(1, -1)
+
+    df_bw = np.load(PATH_ENCODED_IMAGES).reshape(-1, img_bw.shape[1])
     
     bw_cos_sim = cosine_similarity(df_bw, img_bw)
     id = bw_cos_sim.argmax()
