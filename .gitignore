@@ -191,3 +191,5 @@ data/**/
 
 
 .DS_Store
+**/*memo.docx
+**/*memo.pdf
