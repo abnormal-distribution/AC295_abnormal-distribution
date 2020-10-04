@@ -130,11 +130,14 @@ def cosine_dist(image):
     
     img_bw = resize_bw(image, size=SIZE)
     img_bw = np.asarray(img_bw).reshape((SIZE[0], SIZE[1], 1))
-    pred = autoencoder.predict(img_bw.reshape([1,SIZE[0],SIZE[1],1]) / 255.)
+    pred = conv_encoder.predict(img_bw.reshape([1,SIZE[0],SIZE[1],1]) / 255.)
     
-    df_bw = np.load(ENCODED_IMAGES)
+    df_bw = np.load(PATH_ENCODED_IMAGES)
+
+    df_bw_flat = df_bw.reshape(9294,-1)
+    pred_flat = pred.reshape(1,-1)
     
-    bw_cos_sim = cosine_similarity(df_bw, pred)
+    bw_cos_sim = cosine_similarity(df_bw_flat, pred_flat)
     id = bw_cos_sim.argmax()
     
     filename = sorted(glob(PATH_IMAGES_RESIZE_BW + "*.jpg"))
