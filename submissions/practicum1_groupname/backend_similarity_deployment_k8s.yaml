@@ -20,12 +20,18 @@ spec:
           - mountPath: /resize-data
             name: practicum-1-resize-data-volume
             readOnly: true
+          - mountPath: /secrets
+            name: app-secrets
+            readOnly: true
         ports:
         - containerPort: 8083
       volumes:
         - name: practicum-1-resize-data-volume
           persistentVolumeClaim:
             claimName: practicum-1-resize-data-claim
+        - name: app-secrets
+          secret:
+            secretName: art-secret
 ---
 apiVersion: v1
 kind: Service

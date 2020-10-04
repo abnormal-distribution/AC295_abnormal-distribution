@@ -20,12 +20,18 @@ spec:
           - mountPath: /meta-data
             name: practicum-1-meta-data-volume
             readOnly: true
+          - mountPath: /secrets
+            name: app-secrets
+            readOnly: true
         ports:
         - containerPort: 8082
       volumes:
         - name: practicum-1-meta-data-volume
           persistentVolumeClaim:
             claimName: practicum-1-meta-data-claim
+        - name: app-secrets
+          secret:
+            secretName: art-secret
 ---
 apiVersion: v1
 kind: Service

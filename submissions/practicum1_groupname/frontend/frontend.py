@@ -10,6 +10,8 @@ import requests
 
 PATH = "image-data/gap_images/"
 TEMP_PATH = "static/temp/"
+USERNAME = "/secrets/username"
+PASSWORD = "/secrets/password"
 """
 PATH = 'https://storage.googleapis.com/practicum1-abnormal-distribution/static/gap_images/'
 PATH = "/Users/rberi/Google Drive (Stanford GSB)/EdX & Coursera/HarvardX/Advanced Practical Data Science/AC295_abnormal-distribution/submissions/practicum1_groupname/image-data/gap_images/"
@@ -27,8 +29,22 @@ def mainm():
 @app.route('/search', methods=['POST', 'GET'])
 def simpleSearch():
     if request.method == 'POST':  # User clicked submit button
+        with open(USERNAME, 'r') as f:
+            username = f.read()
+
+        with open(PASSWORD, 'r') as f:
+            password = f.read()
+        
         image_name = request.form['content']  # Get image name submitted by user
-        image_file = requests.post(url=db_url_1, json={'image_name': image_name})  # request image files from database
+        image_file = requests.post(
+            url=db_url_1,
+            json={
+                'image_name': image_name,
+                'username': username,
+                'password': password
+            }
+        )  # request image files from database
+        
         image_file = image_file.json()
         
         file_id = [PATH + image for image in image_file['file_id'][:5]]
@@ -50,6 +66,12 @@ def simpleSearch():
 @app.route('/upload', methods=['POST', 'GET'])
 def uploadImage():
     if request.method == 'POST':
+        with open(USERNAME, 'r') as f:
+            username = f.read()
+    
+        with open(PASSWORD, 'r') as f:
+            password = f.read()
+        
         # encoding the uploaded image to base64
         encoded = b64encode(request.files['file'].read())
         imgbase64 = encoded.decode('ascii')
@@ -57,7 +79,15 @@ def uploadImage():
         uri = "data:%s;base64,%s" % (mime, imgbase64)
 
         # request image file from database
-        image_file = requests.post(url=db_url_2, json={'image': imgbase64})
+        image_file = requests.post(
+            url=db_url_2,
+            json={
+                'image': imgbase64,
+                'username': username,
+                'password': password
+            }
+        )
+        
         final_address = PATH + "gap_" + image_file.content.decode("utf-8")+".jpg"
         temp_file = TEMP_PATH + "gap_" + image_file.content.decode("utf-8")+".jpg"
 

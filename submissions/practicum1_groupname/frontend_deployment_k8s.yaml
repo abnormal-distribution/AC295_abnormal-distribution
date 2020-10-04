@@ -20,6 +20,9 @@ spec:
           - mountPath: /image-data
             name: practicum-1-images-volume
             readOnly: true
+          - mountPath: /secrets
+            name: app-secrets
+            readOnly: true
         env:
         - name: DB_HOST1
           valueFrom:
@@ -37,6 +40,9 @@ spec:
         - name: practicum-1-images-volume
           persistentVolumeClaim:
             claimName: practicum-1-images-disk-read-claim
+        - name: app-secrets
+          secret:
+            secretName: art-secret
 ---
 apiVersion: v1
 kind: Service
@@ -51,3 +57,4 @@ spec:
         port: 8081
         targetPort: 8081
         nodePort: 30000
+---
