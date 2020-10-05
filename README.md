@@ -17,11 +17,11 @@ Project Organization
     │   ├── __init__.py
     │   └── build_features.py
     ├── submissions
-    │   ├── practicum1_groupname
-    │   ├── practicum2_groupname
-    │   ├── presentation1_groupname
-    │   ├── presentation2_groupname
-    │   └── project_groupname
+    │   ├── practicum1_Abnormal-Distribution
+    │   ├── practicum2_Abnormal-Distribution
+    │   ├── presentation1_Abnormal-Distribution
+    │   ├── presentation2_Abnormal-Distribution
+    │   └── project_Abnormal-Distribution
     └── test_project.py
 
 --------

@@ -11,6 +11,8 @@ Art Search Engine comprises of three parts:
 * Frontend for user input
 * Backend 1 for managing the metadata search
 * Backend 2 for managing the similar image search
+* You can watch a short intro video [here](https://youtu.be/vchr2w84GtQ)
+* A short note on the project is available [here](https://drive.google.com/file/d/1KSdzLSLOFbbH6Z0HAxVmzRVX39Ov86JU/view?usp=sharing)
 
 
 ## How to build and deploy the Art Search Engine
@@ -35,6 +37,7 @@ gcloud auth configure-docker
 ```
 
 ### Step 3: Build docker images
+* Execute the below commands on the shell from the following folder ```~/AC295_abnormal-distribution/submissions/practicum1_Abnormal-Distribution/```
 ```
 docker build -t gcr.io/${PROJECT_ID}/frontend:fe -f frontend/Docker_frontend ./frontend
 docker build -t gcr.io/${PROJECT_ID}/metadatabase:db -f backend_metaDataQuery/Docker_metaDataQuery ./backend_metaDataQuery
@@ -64,7 +67,8 @@ backend_similarity_deployment_k8s.yaml
     - Meta Data - Save ```metadata.csv``` on disk 2
     - Model and Latent Space Data - Save model file ```conv_encoder.h5```, latent space file ```conv_encoding.npy``` resized image folder ```bw_resize``` on disk 3
     
-        - The model and latent space data files can be generated using provided jupyter notebook ```convolutional_encoder.ipynb``` and by running ```similarity.py``` on the local or virtual machine 
+        - The model and latent space data files can be generated using provided jupyter notebook ```convolutional_encoder.ipynb``` and by running ```similarity.py``` on the local or virtual machine
+        - The data can also be downloaded [here](https://drive.google.com/file/d/1xlZjgPPdqsmD7behiZEWvJjDBB2R7_IS/view?usp=sharing) 
 * Its important to unmount the disk properly. Follow the instructions [here](https://cloud.google.com/sdk/gcloud/reference/compute/instances/detach-disk)
 
 ### Step 7: Start a cluster of 3 nodes
