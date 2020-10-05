@@ -26,4 +26,8 @@ Project Organization
 
 --------
 
+
+## Practicum 1 Submissions
+* [Click Here](submissions/practicum1_Abnormal-Distribution/README.md)
+
 <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
