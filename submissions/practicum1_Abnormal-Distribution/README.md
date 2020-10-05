@@ -15,6 +15,14 @@ Art Search Engine comprises of three parts:
 * A short note on the project is available [here](https://drive.google.com/file/d/1KSdzLSLOFbbH6Z0HAxVmzRVX39Ov86JU/view?usp=sharing)
 
 
+## Practicum Memo
+* [Link Here](https://drive.google.com/file/d/1KSdzLSLOFbbH6Z0HAxVmzRVX39Ov86JU/view?usp=sharing)
+
+
+## Video Presentation
+* [Link Here](https://youtu.be/vchr2w84GtQ)
+
+
 ## How to build and deploy the Art Search Engine
 
 ### Step 0: Clone repo
