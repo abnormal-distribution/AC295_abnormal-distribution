@@ -38,7 +38,7 @@ Art Search Engine comprises of three parts:
 ### Step 2: Set environment variables
 * Run the following commands to set the environment and to check the ```gloud``` configuration
 ```
-export PROJECT_ID=gothic-space-289008
+export PROJECT_ID=<project_id>
 gcloud config set project $PROJECT_ID
 gcloud config list
 gcloud auth configure-docker
