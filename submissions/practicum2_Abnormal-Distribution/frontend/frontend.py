@@ -38,7 +38,7 @@ def create_test_pipeline(image, question):
     question_type = question_token['token_type_ids'].numpy()
     question_attention = question_token['attention_mask'].numpy()
 
-    image = cv2.resize(image, (224, 224)).reshape(1,224,224,3)
+    image = cv2.resize(image, (IMG_HEIGHT, IMG_WIDTH)).reshape(1,IMG_HEIGHT,IMG_WIDTH,IMG_CHANNELS)
 
     return (image, (question_input, question_type, question_attention))
 
