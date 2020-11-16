@@ -92,6 +92,7 @@ def load_model(image_height, image_width, num_channels, num_classes):
 	return model
 
 model = load_model(IMG_HEIGHT, IMG_WIDTH, IMG_CHANNELS, num_classes)
+#model = tf.keras.models.load_model('basicmodelfinal.hdf5')
 
 @app.route('/', methods=['POST', 'GET'])
 def index():

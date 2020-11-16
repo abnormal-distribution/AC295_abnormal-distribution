@@ -2,18 +2,19 @@
 # simple web application.
 FROM python:3.7-slim-buster
 
-# Environment variable or argument passed to simple_query.py
-ENV DB_HOST1='localhost'
-ENV DB_HOST2='localhost'
-
 # This exposes the port 8081 so that Docker container can receive requests through this port.
 EXPOSE 8081
 
 # Copy our python script over to the Docker container.
 COPY . .
 
+RUN apt-get update ##[edited]
+RUN apt-get install 'ffmpeg'\
+    'libsm6'\
+    'libxext6'  -y
+
 # Need to download and install packages
 RUN pip3 install -r requirements.txt
 
 # Run our python script/application in the Docker container.
-CMD python ./frontend.py $DB_HOST1 $DB_HOST2
+CMD python ./frontend.py
