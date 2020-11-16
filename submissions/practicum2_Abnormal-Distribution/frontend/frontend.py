@@ -8,35 +8,30 @@ from tensorflow.keras.utils import to_categorical
 from transformers import BertTokenizer
 import cv2
 
-# defined global variable (executed once)
-IMG_HEIGHT = 224
-IMG_WIDTH = 224
-tokenizer = BertTokenizer.from_pretrained('bert-base-uncased',do_lower_case=True)
 answer_list = list(pd.read_csv("static/data/answers.csv", index_col=0).index)
+
 app = Flask(__name__)
 
-def preprocess_input(question, image_path, tokenizer=tokenizer):
-	# proprocess question: tokenize string questions
-	question_token= tokenizer.encode_plus(
-                    question, 
-                    add_special_tokens = True, # add [CLS], [SEP]
-                    max_length = 24, # max length of the text that can go to BERT (<=512)
-                    padding='max_length',
-                    return_attention_mask = True, # add attention mask to not focus on pad tokens
-                    truncation='longest_first',
-                    return_tensors="tf")
+def create_test_pipeline(image, question):
+    tokenizer = BertTokenizer.from_pretrained('bert-base-uncased',do_lower_case=True)
 
-	question_input = question_token['input_ids']
-	question_type = question_token['token_type_ids']
-	question_attention = question_token['attention_mask']
+    question_token = tokenizer.encode_plus(
+        question, 
+        add_special_tokens = True, # add [CLS], [SEP]
+        max_length = 24, # max length of the text that can go to BERT (<=512)
+        padding='max_length',
+        return_attention_mask = True, # add attention mask to not focus on pad tokens
+        truncation='longest_first',
+        return_tensors="tf"
+    )
 
-	# proprocess images: Read and resize the image
-	img = cv2.imread(image_path)
-	img = cv2.resize(img, (IMG_HEIGHT, IMG_WIDTH))
-	img = np.asarray(img)
-	img = tf.constant(img)
-	img = tf.cast(img, tf.float32)/255.0
-	return (img, (question_input, question_type, question_attention))
+    question_input = question_token['input_ids'].numpy()
+    question_type = question_token['token_type_ids'].numpy()
+    question_attention = question_token['attention_mask'].numpy()
+
+    image = cv2.resize(image, (224, 224)).reshape(1,224,224,3)
+
+    return (image, (question_input, question_type, question_attention))
 
 
 @app.route('/', methods=['POST', 'GET'])
@@ -65,14 +60,14 @@ def index():
 		#user input their own question
 		if selections[idx] == "Other (Input your question below)": 
 			input_questions[idx] = request.form['content']
-			preprocessed_input = preprocess_input(input_questions[idx], images[idx])
+			preprocessed_input = create_test_pipeline(image = cv2.imread(images[idx]), question = input_questions[idx])
 
 		# user chose question from drom-down selections
 		else: 
-			preprocessed_input = preprocess_input(selections[idx], images[idx])
+			preprocessed_input = create_test_pipeline(image = cv2.imread(images[idx]), question = selections[idx])
 
 		# print(input) #debug
-		# predicted_answer = model.predict(input) 
+		# predicted_answer = model.predict(input)[0] 
 		# answer_index = np.argmax(predicted_answer) 
 		# answers[idx] = answer_list[answer_index]
 
@@ -95,5 +90,4 @@ def index():
 			)
 
 if __name__ == "__main__": 
-	
     app.run(debug=True)
