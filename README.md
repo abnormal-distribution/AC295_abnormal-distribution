@@ -30,6 +30,9 @@ Project Organization
 ## Practicum 1 Submissions
 * [Click Here](submissions/practicum1_Abnormal-Distribution/README.md)
 
+## Practicum 2 Submissions
+* [Click Here](submissions/practicum2_Abnormal-Distribution/README.md)
+
 ## Presentation 1 Submissions
 * [Click Here](submissions/presentation1_Abnormal-Distribution/README.md)
 

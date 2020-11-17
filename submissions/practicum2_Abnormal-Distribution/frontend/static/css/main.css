@@ -1,0 +1,132 @@
+/*------------------------------------------------
+Controls the page setting and Background Image
+------------------------------------------------*/
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,300);
+
+html {
+    /*background-image: linear-gradient(to right , #cb2d3e , #ef473a);*/
+    background: url(/static/images/background2.jpg);
+    /*background-position: center;*/
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+}
+
+body {
+  font-family: 'Lato', sans-serif; 
+}
+
+h6 {
+    text-align: center;
+}
+
+img {
+    margin: 10px auto 20px;
+    display: block;
+}
+
+
+.imageBox1 {
+    position: absolute;
+    top: 0%;
+    left: 25%;
+    transform:  translate(-50%,50%);
+    /*height: 40px;*/
+    border-radius: 40px;
+    padding: 10px;
+}
+
+.imageBox2 {
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform:  translate(-50%,50%);
+    /*height: 40px;*/
+    border-radius: 40px;
+    padding: 10px;
+}
+
+.imageBox3 {
+    position: absolute;
+    top: 0%;
+    left: 75%;
+    transform:  translate(-50%,50%);
+    /*height: 40px;*/
+    border-radius: 40px;
+    padding: 10px;
+}
+
+.select{
+  font-size: 13px;
+  /*padding: 10px 8px 10px 14px;*/
+  /*background: #fff;*/
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+.select{
+  width: 105%;
+  left: -2.5%;
+  background:url('/static/images/arrow.png') no-repeat;
+  background-position:100% center;
+}
+
+.select select{
+  background: transparent;
+  line-height: 1;
+  border: 0;
+  padding: 0;
+  border-radius: 0;
+  width: 120%;
+  position: relative;
+  z-index: 10;
+  font-size: 1em;
+}
+
+.InputQBox {
+    display: block;
+    background: transparent;
+    margin: 10px auto 20px;
+}
+
+.ask {
+    margin: 10px auto 20px;
+    display: block;
+    /*left: 50%;*/
+    /*transform:  translate(-50%,50%);*/
+    background: #2f3640;
+    /*height: 20px;*/
+    border-radius: 40px;
+    /*padding: 10px;*/
+    color: white;
+}
+
+.answer{
+    display: block;
+    text-align: center;
+    top: 80%;
+}
+
+.headline {
+    position: absolute;
+    left: 50%;
+    transform:  translate(-50%,50%);
+    /*background: #2f3640;*/
+    height: 20px;
+    border-radius: 40px;
+    padding: 10px;
+    color: #2f3640;
+}
+
+.title {
+    top: 15%;
+    font-size:35px;
+    font-family: American Typewriter, serif;
+}

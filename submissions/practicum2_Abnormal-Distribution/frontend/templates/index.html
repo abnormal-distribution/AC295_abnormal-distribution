@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+
+{% set imageboxes = ["imageBox1", "imageBox2", "imageBox3"] %}
+{% set submits = ["submit1", "submit2", "submit3"] %}
+<h5 class="headline title">Visual Question Answering</h5>
+{% for i in range(3) %}
+    <div class={{imageboxes[i]}}>
+        <img src = {{ images[i] }} alt="test_image"/>
+        <h6 class="question">Select a Question</h6>
+        <form action="/" method="POST">
+            <div class = "select">
+                <select name="Q">
+                    {% for q in questions[i] %}
+                        {% if q == selections[i] %}
+                            <option value= "{{q}}" selected>{{ q }}</option>
+                        {% else %}
+                            <option value= "{{q}}">{{ q }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            {% if  input_questions[i] == "" %}
+                <input class="InputQBox" type="text" placeholder="Enter a Question" name="content" id="content">
+            {% else %}
+                <input class="InputQBox" type="text" placeholder="{{input_questions[i]}}" name="content" id="content">
+            {% endif%}
+            <button class="ask" type="submit" name={{submits[i]}} >Ask!</button>
+        </form>
+        <h6 class="answer">{{ answer[i] }}</h6>
+    </div>
+{% endfor %}
+
+
+
+{% endblock %}
