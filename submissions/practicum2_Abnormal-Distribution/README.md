@@ -12,11 +12,11 @@ Visual Question Answering comprises of the following parts:
 * Model and Utility notebooks in main directory
 * Frontend directory for user input
 * You can watch a short intro video [here](https://youtu.be/vz57yPF3OcA)
-* A presentation deck is available [here](Visual Question Answering.pdf)
+* A presentation deck is available [here](https://drive.google.com/file/d/1XBSsrg2PP2IcAN_TvMNDMHkTZbUZLLCK/view?usp=sharing)
 
 
 ## Practicum Memo
-* [Link Here](Visual Question Answering.pdf)
+* [Link Here](https://drive.google.com/file/d/19-Cb_qXHCKKQi7bxK23Z1Uj36KUMgcg3/view?usp=sharing)
 
 
 ## Video Presentation
