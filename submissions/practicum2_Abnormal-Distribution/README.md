@@ -65,13 +65,13 @@ and place it in the frontend directory.
 ### Step 2: Build docker image
 * Execute the below commands on the shell from the following folder ```~/AC295_abnormal-distribution/submissions/practicum2_Abnormal-Distribution/frontend```
 ```
-docker build -t vqa:frontend -f Docker_frontend . 
+docker build -t frontend -f Docker_frontend . 
 ```
 
 ### Step 3: Run the container
 * Execute the following command:
 ```
-docker run -p 8081:8081 task1:frontend 
+docker run -it -p 8081:8081 frontend 
 ```
 * On your browser, log into address 0.0.0.0:8081
 
