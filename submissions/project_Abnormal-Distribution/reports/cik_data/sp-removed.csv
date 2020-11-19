@@ -1,0 +1,251 @@
+﻿ticker,name
+NBL,Noble Energy
+ETFC,E*TRADE Financial
+HRB,H&R Block
+COTY,Coty Inc.
+KSS,Kohl's Corp.
+ADS,Alliance Data Systems
+HOG,Harley-Davidson
+JWN,Nordstrom
+HP,Helmerich & Payne
+CPRI,Capri Holdings
+AGN,Allergan
+M,"Macy's, Inc."
+RTN,Raytheon Company
+XEC,Cimarex Energy
+WCG,WellCare
+AMG,Affiliated Managers Group
+TRIP,TripAdvisor
+MAC,Macerich
+STI,SunTrust Banks
+VIAB,Viacom
+CELG,Celgene
+NKTR,Nektar Therapeutics
+JEF,Jefferies Financial Group Inc
+TSS,TSYS
+APC,Anadarko Petroleum
+FL,Foot Locker
+RHT,Red Hat
+LLL,L3 Technologies
+MAT,Mattel Inc
+FLR,Fluor Corporation
+BHF,Brighthouse Financial
+GT,The Goodyear Tire & Rubber Company
+NFX,Newfield Exploration
+PCG,PG&E Corp
+SCG,SCANA
+ESRX,Express Scripts
+COL,Rockwell Collins
+AET,Aetna Inc
+SRCL,Stericycle
+EQT,EQT Corp
+CA,CA Inc.
+EVHC,Envision Healthcare
+ANDV,Andeavor
+XL,XL Group
+GGP,GGP Inc.
+DPS,Dr Pepper Snapple Group
+TWX,Time Warner
+RRC,Range Resources
+AYI,Acuity Brands
+MON,Monsanto
+NAVI,Navient Corp
+WYN,Wyndham Worldwide
+CSRA,CSRA Inc.
+SIG,Signet Jewelers
+PDCO,Patterson Companies
+CHK,Chesapeake Energy
+SNI,Scripps Networks Interactive
+BCR,CR Bard
+LVLT,Level 3 Communications
+SPLS,Staples Inc.
+DD,DuPont
+WFM,Whole Foods Market
+AN,AutoNation Inc
+RIG,Transocean
+BBBY,Bed Bath & Beyond
+MUR,Murphy Oil
+MNK,Mallinckrodt
+RAI,Reynolds American
+YHOO,Yahoo! Inc.
+TDC,Teradata Corp.
+R,Ryder Systems Inc.
+MJN,Mead Johnson
+TGNA,"Tegna, Inc."
+DNB,Dun & Bradstreet
+SWN,Southwestern Energy
+URBN,Urban Outfitters
+FTR,Frontier Communications
+FSLR,First Solar
+HAR,Harman Int'l Industries
+LLTC,Linear Technology
+ENDP,Endo International
+PBI,Pitney Bowes Inc
+SE,Spectra Energy Corp
+STJ,St. Jude Medical
+OI,Owens-Illinois
+LM,Legg Mason
+AA,Alcoa Inc
+DO,Diamond Offshore Drilling
+HOT,Starwood Hotels & Resorts Worldwide Inc
+EMC,EMC Corporation
+JCI,Johnson Controls Inc
+CPGX,Columbia Pipeline Group
+GAS,AGL Resources
+TE,TECO Energy
+CVC,Cablevision Systems
+BXLT,Baxalta Inc
+CCE,Coca-Cola Enterprises
+ARG,Airgas Inc
+TWC,Time Warner Cable
+SNDK,SanDisk Corporation
+ADT,ADT Corp
+GME,GameStop
+THC,Tenet Healthcare
+CAM,Cameron International
+POM,Pepco Holdings Inc
+ESV,Ensco plc (now Valaris plc)
+GMCR,Keurig Green Mountain
+CNX,Consol Energy
+PCL,Plum Creek Timber
+PCP,Precision Castparts Corp.
+BRCM,Broadcom Corporation
+CB,Chubb Corp
+FOSL,Fossil Group
+ALTR,Altera Corp
+CMCSK,Comcast K Corp
+CSC,Computer Sciences Corp
+SIAL,Sigma-Aldrich Corp
+GNW,Genworth Financial
+HCBK,Hudson City Bancorp Inc
+JOY,Joy Global
+HSP,Hospira Inc
+PLL,Pall Corp
+DTV,DirecTV
+NE,Noble Corp
+FDO,Family Dollar Stores Inc.
+KRFT,Kraft Foods Group
+ATI,Allegheny Technologies
+TEG,Integrys Energy Group Inc.
+QEP,QEP Resources
+LO,Lorillard Inc.
+WIN,Windstream Holdings Inc
+AGN,"Allergan, Inc"
+DNR,Denbury Resources
+NBR,Nabors Industries
+AVP,Avon Products
+CFN,Carefusion
+PETM,PetSmart Inc.
+SWY,Safeway Inc
+COV,Covidien
+BMS,Bemis Company
+JBL,Jabil Circuit
+BTU,Peabody Energy
+GHC,Graham Holdings
+RDC,Rowan Companies plc
+X,United States Steel Corporation
+FRX,Forest Laboratories
+IGT,International Game Technology
+LSI,LSI Corporation
+BEAM,Beam Inc.
+SLM,SLM Corporation
+CLF,Cliffs Natural Resources
+WPX,"WPX Energy, Inc."
+LIFE,Life Technologies
+ANF,Abercrombie & Fitch
+JDSU,JDS Uniphase
+TER,Teradyne
+MOLX,Molex Inc.
+JCP,J.C. Penney
+NYX,NYSE Euronext
+DELL,"Dell, Inc."
+AMD,Advanced Micro Devices
+SAI,SAIC
+BMC,BMC Software
+S,Sprint Nextel Corp.
+APOL,Apollo Group Inc.
+FHN,First Horizon
+HNZ,H. J. Heinz Company
+DF,Dean Foods
+CVH,Coventry Health Care
+PCS,MetroPCS
+BIG,Big Lots Inc.
+FII,Federated Investors
+TIE,Titanium Metals
+RRD,R.R. Donnelley
+CBE,Cooper Industries
+SUN,Sunoco Inc.
+ANR,Alpha Natural Resources
+LXK,Lexmark Int'l Inc
+DV,"DeVry, Inc."
+SHLD,Sears Holding Corporation
+GR,Goodrich Corporation
+PGN,Progress Energy Inc
+SLE,Sara Lee Corp.
+NVLS,Novellus Systems
+MMI,Motorola Mobility
+EP,El Paso Corp.
+SVU,Supervalu Inc.
+MHS,Medco Health Solutions Inc.
+CEG,Constellation Energy Group
+CPWR,Compuware
+TLAB,Tellabs Inc.
+AKS,AK Steel Holding Corp.
+MWW,Monster Worldwide Inc.
+WFR,MEMC Electronic Materials Inc.
+GAS,Nicor Inc.
+JNS,Janus Capital Group
+ITT,ITT Corp.
+CEPH,Cephalon Inc.
+NSM,National Semiconductor Corp.
+MI,Marshall & Iisley Corp.
+RSH,RadioShack Corp.
+MEE,Massey Energy Company
+NOVL,"Novell, Inc."
+GENZ,Genzyme Corp.
+Q,Qwest Communications
+MFE,McAfee Inc.
+AYE,Allegheny Energy Inc.
+KG,King Pharmaceuticals Inc.
+EK,Eastman Kodak Co.
+ODP,Office Depot Inc.
+NYT,The New York Times Co.
+PTV,Pactiv Corp.
+SII,Smith International Inc.
+MIL,Millipore Inc.
+STR,Questar Corp.
+XTO,XTO Energy Inc.
+BJS,BJ Services Company
+RX,IMS Health
+CIEN,Ciena
+DYN,Dynegy
+KBH,KB Home
+CVG,Convergys
+SGP,Schering-Plough Corp.
+CBE,Cooper Industries Ltd.
+ACAS,American Capital
+JNY,Jones Apparel Group
+WB,Wachovia Bank
+LEH,Lehman Brothers
+FRE,Freddie Mac
+FNM,Fannie Mae
+ABK,Ambac Financial
+TRB,Tribune Co.
+DJ,Dow Jones
+AV,Avaya Inc.
+SLR,Solectron
+NCR,NCR Corp.
+MXIM,Maxim Integrated Products
+FDC,First Data Corp.
+KSE,KeySpan
+TSG,Sabre Holdings
+SBL,Symbol Technologies
+ABS,Albertsons
+GLK,Great Lakes Chemical
+QTRN,Quintiles Transnational
+BS,Bethlehem Steel
+OI,Owens-Illinois
+GRA,W.R. Grace
+CCK,Crown Holdings
+RAD,RiteAid
+LDW,Laidlaw
