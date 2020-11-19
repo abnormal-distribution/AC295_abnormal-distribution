@@ -193,3 +193,6 @@ data/**/
 .DS_Store
 **/*memo.docx
 **/*memo.pdf
+
+submissions/project_Abnormal-Distribution/reports/10-K/*
+submissions/project_Abnormal-Distribution/reports/10-Q/*
