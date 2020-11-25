@@ -2,6 +2,11 @@ import pandas as pd
 
 from zipline.data.bundles import register
 from zipline.data.bundles.csvdir import csvdir_equities
+
+
+
+
+import pandas as pd
 from zipline.utils.calendars import get_calendar
 import sys
 
@@ -130,3 +135,5 @@ def from_sep_dump(file_name, start=None, end=None):
 
 
 register("sep", from_sep_dump('/content/drive/MyDrive/abnormal-distribution-project-data/stocks/SHARADAR_SEP.csv'), )
+register("sp500", from_sep_dump('/content/drive/MyDrive/abnormal-distribution-project-data/stocks/SHARADAR_SP500.csv'), )
+register("sp1500", from_sep_dump('/content/drive/MyDrive/abnormal-distribution-project-data/stocks/SHARADAR_SP1500.csv'), )
