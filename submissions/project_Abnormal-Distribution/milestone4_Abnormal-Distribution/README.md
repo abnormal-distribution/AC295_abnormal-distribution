@@ -38,7 +38,7 @@ We explore three different models, Loughran-McDonald, BERT, and Fin-BERT. We fin
     │   └── Baseline_Model.ipynb
     ├── finnhub
     │   ├── Finnhub full to Mongo.ipynb
-    │   ├── Finn_articles_EDA.ipynb
+    │   ├── Finnhub_articles_EDA.ipynb
     │   └── TFRecords_FinnhubNews_Pipeline.ipynb
     ├── key-developments
     │   └── CIQCompustat_keydev_model.ipynb
@@ -61,30 +61,27 @@ We explore three different models, Loughran-McDonald, BERT, and Fin-BERT. We fin
 
 --------
 
-## Notebooks
+## Key Notebooks
 
-* **10Ks_EDA_Model.ipynb:**
+* **10Ks_EDA_Model.ipynb:** EDA, FinBERT feature Extraction and model training on 10-K's
 
-* **Baseline_Model.ipynb:** 
+* **Finnhub full to Mongo.ipynb:** Extracts FinnHub articles using API and stores them in mongoDB Atlas Cluster
+* **Finnhub_articles_EDA.ipynb:** EDA on FinnHub news dataset
 
-* **Finnhub full to Mongo.ipynb:** 
-* **Finn_articles_EDA.ipynb:** 
-* **TFRecords_FinnhubNews_Pipeline.ipynb:** 
+* **CIQCompustat_keydev_model.ipynb:** EDA, FinBERT feature Extraction and model training on Key Developments dataset
 
-* **CIQCompustat_keydev_model.ipynb:** 
+* **Language_Training.ipynb:** Fine-tune BERT with a Masked Language modeling target using our news database
+* **Work_towards_Model.ipynb:** Pipeline to fine-tune BERT from newly trained language model using different targets
 
-* **Language_Training.ipynb:** 
-* **Work_towards_Model.ipynb:** 
-* **sentiment pipeline:** 
-* **Lean_Pipeline.ipynb:** 
-* **Sentiment.ipynb:** 
+* **Lean_Pipeline.ipynb:** Aggregates returns, sentiment, and news into different databases
+* **Sentiment.ipynb:** Calculates sentiment from different models
 
 * **Tiingo+FinnHub_News_fin_BERT_Lean.ipynb:** 
 * **Tiingo+FinnHub_News_fin_BERT_Lean_Master.ipynb:** 
 * **Tiingo+FinnHub_News_fin_BERT_Lean_Master_HS_extraction.ipynb:** 
 * **Tiingo_News_BERT_Feature_Extraction.ipynb:** 
-* **Tiingo_News_to_MongoDB_Atlas.ipynb:** 
+* **Tiingo_News_to_MongoDB_Atlas.ipynb:** Extracts Tiingo articles and stores them in mongoDB Atlas Cluster
 
-* **Visualization_of_attention.ipynb:** 
+* **Visualization_of_attention.ipynb:** Compares the attentions from BERT vs FinBERT with Captum visualization
 
-* **Zipline.ipynb:** 
+* **Zipline.ipynb:** Pipeline to feed stock prices into zipline, calculate portfolios and returns

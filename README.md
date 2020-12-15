@@ -38,4 +38,8 @@ Project Organization
 
 ## Presentation 2 Submissions
 * [Click Here](submissions/presentation2_Abnormal-Distribution/README.md)
+
+## Project Submissions
+* [Click Here](submissions/project_Abnormal-Distribution/milestone4_Abnormal-Distribution/README.md)
+
 <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
