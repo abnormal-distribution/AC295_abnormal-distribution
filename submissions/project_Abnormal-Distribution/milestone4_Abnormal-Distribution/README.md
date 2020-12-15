@@ -76,10 +76,9 @@ We explore three different models, Loughran-McDonald, BERT, and Fin-BERT. We fin
 * **Lean_Pipeline.ipynb:** Aggregates returns, sentiment, and news into different databases
 * **Sentiment.ipynb:** Calculates sentiment from different models
 
-* **Tiingo+FinnHub_News_fin_BERT_Lean.ipynb:** 
-* **Tiingo+FinnHub_News_fin_BERT_Lean_Master.ipynb:** 
-* **Tiingo+FinnHub_News_fin_BERT_Lean_Master_HS_extraction.ipynb:** 
-* **Tiingo_News_BERT_Feature_Extraction.ipynb:** 
+* **Tiingo+FinnHub_News_fin_BERT_Lean.ipynb:** Fine-tuning BERT/FinBERT models with different target sets - 19 Models
+* **Tiingo+FinnHub_News_fin_BERT_Lean_Master.ipynb:** Master pipeline for FinBERT and BERT Models
+* **Tiingo+FinnHub_News_fin_BERT_Lean_Master_HS_extraction.ipynb:** FinBERT feature Extraction from news dataset
 * **Tiingo_News_to_MongoDB_Atlas.ipynb:** Extracts Tiingo articles and stores them in mongoDB Atlas Cluster
 
 * **Visualization_of_attention.ipynb:** Compares the attentions from BERT vs FinBERT with Captum visualization
