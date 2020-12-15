@@ -1,0 +1,31 @@
+# gcePersistentDisk - Persistent Volume and Persistent Volume Claim
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: practicum1-images
+spec:
+  storageClassName: ""
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadOnlyMany
+  claimRef:
+    namespace: default
+    name: practicum-1-images-disk-read-claim
+  gcePersistentDisk:
+    pdName: practicum-1-images
+    fsType: ext4
+    readOnly: true
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: practicum-1-images-disk-read-claim
+spec:
+  storageClassName: ""
+  resources:
+      requests:
+        storage: 10Gi
+  accessModes:
+    - ReadOnlyMany
+---

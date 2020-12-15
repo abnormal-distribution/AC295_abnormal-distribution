@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+
+
+ </div> 
+ <h5 class="image-title">Displaying the most similar image</h5>
+ <!-- <h7 class="image-subtitle">{{ subtitle }}</h7> -->
+<div>
+  <img class="image-result_ori" src="{{image_url}}">
+  <img class="image-result_sim" src="{{similar_image_url}}" >
+</div>
+  <a class="backHome" href="/">Back to Home</a>
+</div>
+
+
+{% endblock %}
